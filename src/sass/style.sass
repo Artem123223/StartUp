@@ -1,0 +1,198 @@
+* 
+  margin: 0
+  padding: 0
+
+.wrapper
+  max-width: 1140px
+  margin: 0 auto
+  
+header
+  background-image: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)), url('../img/startup.jpg')
+  background-size: cover
+  background-position: center
+  background-repeat: no-repeat
+  width: 100%
+
+.menu
+  display: flex
+  align-items: center
+  padding-top: 50px
+
+.justify-between
+  display: flex
+  justify-content: space-between
+
+.flex
+  display: flex
+
+.align-items
+  display: flex
+  align-items: center
+
+.column
+  display: flex
+  flex-direction: column
+
+.home
+  gap: 35px
+
+.logo
+  font-size: 24px
+  line-height: 36px
+  color: #fff
+  font-weight: 600
+  font-family: "Montserrat"
+  text-decoration: none
+
+.hometxt
+  font-size: 14px
+  letter-spacing: 0px
+  line-height: 24px
+  color: #fff
+  font-weight: 400
+  font-family: "Montserrat"
+  cursor: pointer
+  position: relative
+  &:after
+    content: ''
+    position: absolute
+    width: 0
+    height: 2px
+    left: 0
+    bottom: -3px
+    background-color: #fff
+    transition: width 0.2s ease
+  &:hover:after
+    width: 100%
+
+.hi
+  padding: 250px 0
+  width: auto
+
+h1
+  font-size: 48px
+  text-transform: uppercase
+  color: #fff
+  font-weight: 600
+  font-family: "Montserrat"
+  text-align: center
+  margin-bottom: 20px
+
+.ur
+  text-align: center
+  font-size: 24px
+  line-height: 24px
+  color: #fff
+  font-weight: 100
+  margin-bottom: 50px
+
+.getstart
+  padding: 17px 35px
+  text-align: center
+
+.getstarted
+  font-size: 16px
+  line-height: 24px
+  text-transform: uppercase
+  color: #fff
+  font-weight: 500
+  font-family: "Montserrat"
+  text-align: center
+  text-decoration: none
+  padding: 17px 35px
+  border-radius: 2px
+  border: 2px solid #fff
+  transition: all 0.2s ease
+  &:hover
+    background-color: #fff
+    color: #c0301c
+
+main
+  padding-top: 100px
+
+.services
+  display: flex
+  align-items: center
+  flex-direction: column
+
+.h2-txt
+  font-size: 20px
+  line-height: 24px
+  text-transform: uppercase
+  color: #555
+  font-weight: 600
+  font-family: "Montserrat"
+  text-align: center
+  margin-bottom: 25px
+
+.hr-underh2
+  border: none
+  border-top: 2px solid #555
+  width: 50px
+  margin-bottom: 25px
+
+.underh2-txt
+  font-size: 16px
+  line-height: 24px
+  color: #555
+  font-weight: 400
+  font-family: "Roboto Slab"
+  text-align: center
+  margin-bottom: 70px
+
+.thre-serv
+  gap: 45px
+
+.fi-h-txt
+  font-size: 14px
+  text-transform: uppercase
+  color: #555
+  font-weight: 500
+  font-family: "Montserrat"
+  text-align: center
+  margin-bottom: 20px
+
+.fi-txt
+  font-size: 14px
+  line-height: 24px
+  color: #555
+  font-weight: 400
+  font-family: "Roboto Slab"
+  text-align: center
+
+.ocin-serv,
+.icon-serv
+  margin-bottom: 30px
+
+.phon, .pho
+  width: 90px
+  height: 90px
+  border-radius: 50%
+  border: 2px solid #ddd
+  display: flex
+  align-items: center
+  justify-content: center
+  transition: all 0.2s ease
+
+.icon-svg
+  width: 53px
+  height: 40px
+  background-color: #c0301c
+  mask-repeat: no-repeat
+  mask-position: center
+  mask-size: contain
+
+.icon-font
+  mask-image: url('../img/fa-font.svg')
+
+.icon-code
+  mask-image: url('../img/fa-code.svg')
+  
+.icon-support
+  mask-image: url('../img/fa-support.svg')
+
+.pho:hover 
+  cursor: pointer
+  background-color: #c0301c
+  .icon-svg
+    background-color: #fff
