@@ -1,6 +1,49 @@
-* 
+@font-face
+  font-family: 'Myriad Pro'
+  src: url('../fonts/MyriadPro-Regular.woff2') format('woff2'), url('../fonts/MyriadPro-Regular.woff') format('woff')
+  font-weight: 400
+  font-style: normal
+  font-display: swap
+
+@font-face
+  font-family: 'Myriad Pro'
+  src: url('../fonts/MyriadPro-Semibold.woff2') format('woff2'), url('../fonts/MyriadPro-Semibold.woff') format('woff')
+  font-weight: 600
+  font-style: normal
+  font-display: swap
+
+@font-face
+  font-family: 'Myriad Pro'
+  src: url('../fonts/MyriadPro-Bold.woff2') format('woff2'), url('../fonts/MyriadPro-Bold.woff') format('woff')
+  font-weight: 700
+  font-style: normal
+  font-display: swap
+
+@font-face
+  font-family: 'Roboto Slab'
+  src: url('../fonts/RobotoSlab-Regular.woff2') format('woff2'), url('../fonts/RobotoSlab-Regular.woff') format('woff')
+  font-weight: 400
+  font-style: normal
+  font-display: swap
+
+@font-face
+  font-family: 'Roboto Slab'
+  src: url('../fonts/RobotoSlab-Medium.woff2') format('woff2'), url('../fonts/RobotoSlab-Medium.woff') format('woff')
+  font-weight: 500
+  font-style: normal
+  font-display: swap
+
+@font-face
+  font-family: 'Roboto Slab'
+  src: url('../fonts/RobotoSlab-Bold.woff2') format('woff2'), url('../fonts/RobotoSlab-Bold.woff') format('woff')
+  font-weight: 700
+  font-style: normal
+  font-display: swap
+
+*
   margin: 0
   padding: 0
+  font-family: 'Myriad Pro', sans-serif
 
 .wrapper
   max-width: 1140px
@@ -14,9 +57,13 @@ header
   width: 100%
 
 .menu
-  display: flex
-  align-items: center
-  padding-top: 50px
+  position: fixed
+  top: 50px
+  left: 50%
+  transform: translateX(-50%)
+  max-width: 1140px
+  width: 100%
+  z-index: 2
 
 .justify-between
   display: flex
@@ -32,6 +79,9 @@ header
 .column
   display: flex
   flex-direction: column
+
+.relative
+  position: static
 
 .home
   gap: 35px
@@ -53,6 +103,7 @@ header
   font-family: "Montserrat"
   cursor: pointer
   position: relative
+  text-decoration: none
   &:after
     content: ''
     position: absolute
@@ -110,10 +161,14 @@ h1
 main
   padding-top: 100px
 
-.services
+.services,
+.aboutuz
   display: flex
   align-items: center
   flex-direction: column
+
+.aboutus
+  background-color: #f8f8f8
 
 .h2-txt
   font-size: 20px
@@ -124,6 +179,9 @@ main
   font-family: "Montserrat"
   text-align: center
   margin-bottom: 25px
+
+.chik
+  padding-top: 100px
 
 .hr-underh2
   border: none
@@ -142,6 +200,7 @@ main
 
 .thre-serv
   gap: 45px
+  margin-bottom: 100px
 
 .fi-h-txt
   font-size: 14px
@@ -162,7 +221,7 @@ main
 
 .ocin-serv,
 .icon-serv
-  margin-bottom: 30px
+  margin-bottom: 30px 
 
 .phon, .pho
   width: 90px
@@ -196,3 +255,73 @@ main
   background-color: #c0301c
   .icon-svg
     background-color: #fff
+
+.txt-about
+  gap: 32px
+  margin-bottom: 70px
+
+.txt-aboutus
+  font-size: 14px
+  line-height: 24px
+  color: #555
+  font-weight: 400
+  font-family: "Roboto Slab"
+
+.cards-peoples
+  gap: 29px
+  position: relative
+
+.card1,
+.card2, 
+.card3, 
+.card4
+  flex-direction: column
+
+.bro-margin
+  margin-bottom: 20px
+
+.name
+  font-size: 14px
+  text-transform: uppercase
+  color: #555
+  margin-bottom: 10px
+
+.who
+  font-size: 13px
+  color: #555
+  font-weight: 400
+  font-family: "Roboto Slab"
+
+.left_button,
+.right_button
+  appearance: none
+  border: none
+  opacity: 0.200
+  background-color: #555
+  cursor: pointer
+
+.left_button
+  position: absolute
+  content: ""
+  top: 40%
+  left: 0
+  transform: translateY(-50%)
+
+.right_button
+  position: absolute
+  content: ""
+  top: 40%
+  right: 0
+  transform: translateY(-50%)
+
+// for angles and button 
+//   active 
+//     fill: #ddd
+//     background-color: #c0301c
+  
+.left_angle,
+.right_angle
+  padding: 12px 14px
+
+.right_angle
+  transform: scaleX(-1)

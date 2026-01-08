@@ -34,7 +34,7 @@ export const html = () => {
 }
 
 export const css = () => {
-    return gulp.src(["src/sass/*.css", "src/sass/*.sass", "src/sass/*.scss"]) // додано scss про всяк випадок
+    return gulp.src(["src/sass/*.css", "src/sass/*.sass", "src/sass/*.scss"])
         .pipe(sass({ outputStyle: "compressed" }).on("error", sass.logError))
         .pipe(autoprefixer({ overrideBrowserslist: ["last 15 versions"], cascade: true }))
         .pipe(gcmq())
@@ -59,14 +59,13 @@ export const files = () => {
 }
 
 export const fonts = () => {
-    return gulp.src("src/fonts/**/*.*")
+    return gulp.src("src/fonts/**/*.*", { encoding: false })
         .pipe(gulp.dest("docs/fonts"))
         .pipe(server.stream());
 }
 
 export const images = () => {
-    return gulp.src("src/img/**/*")
-        .pipe(cache(imagemin()))
+    return gulp.src("src/img/**/*", { encoding: false })
         .pipe(gulp.dest("docs/img"))
         .pipe(server.stream());
 }

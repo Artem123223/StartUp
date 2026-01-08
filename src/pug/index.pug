@@ -6,18 +6,19 @@ html(lang="en")
     link(rel="stylesheet", href="css/style.css")
     title StartUp
   body
-    header
+    header(id="0")
       .wrapper
-        .menu.justify-between
-          a.logo(href="index.html") Startup 
-          .home.flex
-            a.hometxt Home
-            a.hometxt Services
-            a.hometxt About
-            a.hometxt Works
-            a.hometxt Blog
-            a.hometxt Clients
-            a.hometxt Contact
+        .menu
+          .justify-between.align-items.relative
+            a.logo(href="index.html") Startup 
+            .home.flex
+              a(href="#0").hometxt Home
+              a(href="#1").hometxt Services
+              a.hometxt About
+              a.hometxt Works
+              a.hometxt Blog
+              a.hometxt Clients
+              a.hometxt Contact
         .welcome 
           .hi
             h1 welcome to startup
@@ -26,7 +27,7 @@ html(lang="en")
               a.getstarted(href="#") Get Started
     main 
       .wrapper
-        div.services
+        .services(id="1")
           h2.h2-txt Services
           hr.hr-underh2
           p.underh2-txt We offer ipsum dolor sit amet, consetetur sadipscing elitr amet
@@ -49,3 +50,38 @@ html(lang="en")
                   .icon-svg.icon-support
               p.fi-h-txt Expert Support
               p.fi-txt Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit. Lorem ipsum.
+      .aboutus 
+        .wrapper.aboutuz
+          h2.h2-txt.chik About Us
+          hr.hr-underh2
+          p.underh2-txt We offer ipsum dolor sit amet, consetetur sadipscing elitr amet
+          .txt-about.justify-between
+            p.txt-aboutus Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sediam nonumy eirmod tempor invidunt ut labore et dolore aliquyam erat, sed diam voluptua. At vero eos et accusam et justo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor et dolore aliquyam erat. Lorem ipsum dolor sit amet. Lorem ipsum eat.
+            p.txt-aboutus Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sediam nonumy eirmod tempor invidunt ut labore et dolore aliquyam erat, sed diam voluptua. At vero eos et accusam et justo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor et dolore aliquyam erat. Lorem ipsum dolor sit amet. Lorem ipsum eat.
+          .cards-peoples.align-items.justify-between
+            button.left_button(type="button" id="10")
+              svg.left_angle(version='1.2' xmlns='http://www.w3.org/2000/svg' viewbox='0 0 8 14' width='8' height='14')
+                style.
+                  .a{fill:#ddd}
+                path.a(d='m8 1.2q0-0.2-0.1-0.4l-0.7-0.7q-0.2-0.1-0.3-0.1-0.2 0-0.4 0.1l-6.4 6.6q-0.1 0.1-0.1 0.3 0 0.2 0.1 0.3l6.4 6.6q0.2 0.1 0.4 0.1 0.1 0 0.3-0.1l0.7-0.7c0-0.1 0.1-0.3 0.1-0.4q0-0.1-0.1-0.3l-5.4-5.5 5.4-5.5q0.1-0.2 0.1-0.3z')
+              button.right_button(type="button" id="10")
+                svg.right_angle(version='1.2' xmlns='http://www.w3.org/2000/svg' viewbox='0 0 8 14' width='8' height='14')
+                  style.
+                    .a{fill:#ddd}
+                  path.a(d='m8 1.2q0-0.2-0.1-0.4l-0.7-0.7q-0.2-0.1-0.3-0.1-0.2 0-0.4 0.1l-6.4 6.6q-0.1 0.1-0.1 0.3 0 0.2 0.1 0.3l6.4 6.6q0.2 0.1 0.4 0.1 0.1 0 0.3-0.1l0.7-0.7c0-0.1 0.1-0.3 0.1-0.4q0-0.1-0.1-0.3l-5.4-5.5 5.4-5.5q0.1-0.2 0.1-0.3z')
+            .card1.align-items
+              img.bro-margin(src="img/uddin.png")
+              p.name Md. Khalil Uddin
+              p.who Head of Ideas
+            .card2.align-items
+              img.bro-margin(src="img/miah.png")
+              p.name Rubel Miah
+              p.who Lead WordPress Developer
+            .card3.align-items
+              img.bro-margin(src="img/mia.png")
+              p.name Shamim Mia
+              p.who Sr. Web Developer
+            .card4.align-items
+              img.bro-margin(src="img/doe.png")
+              p.name John Doe
+              p.who Front-end Developer
