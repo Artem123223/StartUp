@@ -7,18 +7,19 @@ html(lang="en")
     title StartUp
   body
     header(id="0")
-      .wrapper
-        .menu
+      .menu
+        .wrapper
           .justify-between.align-items.relative
             a.logo(href="index.html") Startup 
             .home.flex
               a(href="#0").hometxt Home
               a(href="#1").hometxt Services
-              a.hometxt About
-              a.hometxt Works
+              a(href="#2").hometxt About
+              a(href="#3").hometxt Works
               a.hometxt Blog
               a.hometxt Clients
               a.hometxt Contact
+      .wrapper
         .welcome 
           .hi
             h1 welcome to startup
@@ -34,23 +35,23 @@ html(lang="en")
           .thre-serv.justify-between.align-items
             .first-serv.align-items.column
               .icon-serv
-                .pho
+                .pho(id="d")
                   .icon-svg.icon-font
-              p.fi-h-txt Clean Typography
+              p.fi-h-txt(id="icon-1") Clean Typography
               p.fi-txt Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit. Lorem ipsum.
             .middle-serv.align-items.column
               .icon-serv
-                .pho
+                .pho(id="b")
                   .icon-svg.icon-code
-              p.fi-h-txt Rock Solid Code
+              p.fi-h-txt(id="icon-2") Rock Solid Code
               p.fi-txt Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit. Lorem ipsum.
             .last-serv.align-items.column 
               .icon-serv
-                .pho
+                .pho(id="q")
                   .icon-svg.icon-support
-              p.fi-h-txt Expert Support
+              p.fi-h-txt(id="icon-3") Expert Support
               p.fi-txt Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit. Lorem ipsum.
-      .aboutus 
+      .aboutus(id="2")
         .wrapper.aboutuz
           h2.h2-txt.chik About Us
           hr.hr-underh2
@@ -85,3 +86,33 @@ html(lang="en")
               img.bro-margin(src="img/doe.png")
               p.name John Doe
               p.who Front-end Developer
+      .latestworks(id="3").wrapper.chik
+        h2.h2-txt Latest Works
+        hr.hr-underh2
+        .categories
+          a(href="#" id="ds") All
+          a(href="#" id="ks") Branding
+          a(href="#" id="vs") Design
+          a(href="#" id="gs") Development
+          a(href="#" id="ws") Strategy
+        .items 
+          .img.img-1
+            img(src="img/hair.png", alt="волосся")
+          .img.img-2
+            img(src="img/bird.png", alt="волосся")
+          .img.img-3
+            img(src="img/work.png", alt="волосся")
+          .img.img-4
+            img(src="img/camera.png", alt="волосся")
+          .img.img-5
+            img(src="img/bike.png", alt="волосся")
+          .img.img-6
+            img(src="img/note.png", alt="волосся")
+          .img.img-7
+            img(src="img/table.png", alt="волосся")
+          .img.img-8
+            img(src="img/paper.png", alt="волосся")
+          .img.img-9
+            img(src="img/anything.png", alt="волосся")
+
+    script(src="js/scripts.js") 

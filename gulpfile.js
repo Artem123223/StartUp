@@ -49,7 +49,7 @@ export const js = () => {
         .pipe(uglify.default())
         .pipe(concat("scripts.js"))
         .pipe(gulp.dest("docs/js"))
-        .pipe(server.stream());
+        .on('end', server.reload);
 }
 
 export const files = () => {

@@ -58,12 +58,17 @@ header
 
 .menu
   position: fixed
-  top: 50px
+  top: 0
   left: 50%
   transform: translateX(-50%)
-  max-width: 1140px
   width: 100%
+  padding: 20px 30px
   z-index: 2
+  transition: background-color 0.3s, backdrop-filter 0.3s
+
+.menu.active
+  background-color: rgba(253, 38, 38, 0.274)
+  backdrop-filter: blur(6px)
 
 .justify-between
   display: flex
@@ -117,9 +122,9 @@ header
     width: 100%
 
 .hi
-  padding: 250px 0
+  padding: calc(250px + 76px) 0 250px
   width: auto
-
+  
 h1
   font-size: 48px
   text-transform: uppercase
@@ -211,6 +216,9 @@ main
   text-align: center
   margin-bottom: 20px
 
+.bigger-h 
+  font-size: 25px
+
 .fi-txt
   font-size: 14px
   line-height: 24px
@@ -270,6 +278,7 @@ main
 .cards-peoples
   gap: 29px
   position: relative
+  margin-bottom: 100px
 
 .card1,
 .card2, 
@@ -325,3 +334,34 @@ main
 
 .right_angle
   transform: scaleX(-1)
+
+.latestworks
+  display: flex
+  flex-direction: column
+  align-items: center
+  margin-bottom: 100px
+
+.categories a
+  font-size: 16px
+  line-height: 24px
+  color: #555
+  font-weight: 400
+  font-family: "Roboto Slab"
+  text-align: center
+  text-decoration: none
+  transition: 0.2s ease
+  &:hover
+    color: #c0301c
+
+.toggle
+  color: #c0301c !important
+
+.categories 
+  display: flex
+  gap: 29px
+  margin-bottom: 65px
+
+.items
+  display: flex
+  flex-wrap: wrap
+  gap: 30px
