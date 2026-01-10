@@ -159,6 +159,7 @@ h1
   border-radius: 2px
   border: 2px solid #fff
   transition: all 0.2s ease
+  cursor: pointer
   &:hover
     background-color: #fff
     color: #c0301c
@@ -340,6 +341,72 @@ main
   flex-direction: column
   align-items: center
   margin-bottom: 100px
+
+.name-item
+  font-size: 18px
+  color: #fff
+  font-weight: 400
+  font-family: "Montserrat"
+  text-align: center
+  margin-bottom: 16px
+
+.name-categ
+  font-size: 12px
+  line-height: 24px
+  color: #fff
+  font-weight: 400
+  font-family: "Roboto Slab"
+  text-align: center
+  margin-bottom: 24px
+
+.txt-img
+  position: absolute
+  inset: 0
+  background-color: rgba(192, 48, 28, 0.7)
+  z-index: 3
+
+  display: flex
+  justify-content: center
+  align-items: center
+  flex-direction: column
+
+  opacity: 0
+  visibility: hidden
+  transition: opacity .25s ease
+
+
+.img:hover .txt-img,
+.img:focus .txt-img
+  opacity: 1
+  visibility: visible
+
+.img
+  position: relative
+  cursor: pointer
+
+.sdsx
+  padding: 5px 20px
+  font-size: 14px
+  letter-spacing: 1px
+  line-height: 24px
+  text-transform: uppercase
+  color: #fff
+  font-weight: 400
+  font-family: "Roboto Slab"
+  text-align: center
+  cursor: pointer
+  border: 2px solid #fff
+  transition: 0.2s ease
+  &:hover
+    color: #c0301c
+    background-color: #fff
+
+.sdc path
+  fill: #fff
+  transition: 0.2s ease
+
+.sdsx:hover .sdc path
+  fill: #c0301c
 
 .categories a
   font-size: 16px

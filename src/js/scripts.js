@@ -7,7 +7,8 @@ const menu = document.querySelector(".menu"),
       branding = document.querySelector("#ks"),
       design = document.querySelector("#vs"),
       development = document.querySelector("#gs"),
-      strategy = document.querySelector("#ws")
+      strategy = document.querySelector("#ws"),
+      txtimg = document.querySelector(".txt-img")
 
 const img1 = document.querySelector(".img-1"),
       img2 = document.querySelector(".img-2"),
@@ -48,6 +49,7 @@ categ.forEach(item => {
       img3.style.display = "block"
       img5.style.display = "block"
       img9.style.display = "block"
+      img4.style.display = "block"
     } else if(item === strategy) {
       img4.style.display = "block"
       img6.style.display = "block"
