@@ -65,25 +65,53 @@ html(lang="en")
                 style.
                   .a{fill:#ddd}
                 path.a(d='m8 1.2q0-0.2-0.1-0.4l-0.7-0.7q-0.2-0.1-0.3-0.1-0.2 0-0.4 0.1l-6.4 6.6q-0.1 0.1-0.1 0.3 0 0.2 0.1 0.3l6.4 6.6q0.2 0.1 0.4 0.1 0.1 0 0.3-0.1l0.7-0.7c0-0.1 0.1-0.3 0.1-0.4q0-0.1-0.1-0.3l-5.4-5.5 5.4-5.5q0.1-0.2 0.1-0.3z')
-              button.right_button(type="button" id="10")
-                svg.right_angle(version='1.2' xmlns='http://www.w3.org/2000/svg' viewbox='0 0 8 14' width='8' height='14')
-                  style.
-                    .a{fill:#ddd}
-                  path.a(d='m8 1.2q0-0.2-0.1-0.4l-0.7-0.7q-0.2-0.1-0.3-0.1-0.2 0-0.4 0.1l-6.4 6.6q-0.1 0.1-0.1 0.3 0 0.2 0.1 0.3l6.4 6.6q0.2 0.1 0.4 0.1 0.1 0 0.3-0.1l0.7-0.7c0-0.1 0.1-0.3 0.1-0.4q0-0.1-0.1-0.3l-5.4-5.5 5.4-5.5q0.1-0.2 0.1-0.3z')
+            button.right_button(type="button" id="10")
+              svg.right_angle(version='1.2' xmlns='http://www.w3.org/2000/svg' viewbox='0 0 8 14' width='8' height='14')
+                style.
+                  .a{fill:#ddd}
+                path.a(d='m8 1.2q0-0.2-0.1-0.4l-0.7-0.7q-0.2-0.1-0.3-0.1-0.2 0-0.4 0.1l-6.4 6.6q-0.1 0.1-0.1 0.3 0 0.2 0.1 0.3l6.4 6.6q0.2 0.1 0.4 0.1 0.1 0 0.3-0.1l0.7-0.7c0-0.1 0.1-0.3 0.1-0.4q0-0.1-0.1-0.3l-5.4-5.5 5.4-5.5q0.1-0.2 0.1-0.3z')
             .card1.align-items
-              img.bro-margin(src="img/uddin.png")
+              .photo-wrap
+                img.bro-margin(src="img/uddin.png")
+                .backs
+                  .backs-flex
+                    img.sd(src="img/facebook.svg")
+                    img.sd(src="img/twitter.svg")
+                    img.sd(src="img/google.svg")
+                    img.sd(src="img/linkedin.svg")
               p.name Md. Khalil Uddin
               p.who Head of Ideas
             .card2.align-items
-              img.bro-margin(src="img/miah.png")
+              .photo-wrap
+                img.bro-margin(src="img/miah.png")
+                .backs
+                  .backs-flex
+                    img.sd(src="img/facebook.svg")
+                    img.sd(src="img/twitter.svg")
+                    img.sd(src="img/google.svg")
+                    img.sd(src="img/linkedin.svg")
               p.name Rubel Miah
               p.who Lead WordPress Developer
             .card3.align-items
-              img.bro-margin(src="img/mia.png")
+              .photo-wrap
+                img.bro-margin(src="img/mia.png")
+                .backs
+                  .backs-flex
+                    img.sd(src="img/facebook.svg")
+                    img.sd(src="img/twitter.svg")
+                    img.sd(src="img/google.svg")
+                    img.sd(src="img/linkedin.svg")
               p.name Shamim Mia
               p.who Sr. Web Developer
             .card4.align-items
-              img.bro-margin(src="img/doe.png")
+              .photo-wrap
+                img.bro-margin(src="img/doe.png")
+                .backs
+                  .backs-flex
+                    img.sd(src="img/facebook.svg")
+                    img.sd(src="img/twitter.svg")
+                    img.sd(src="img/google.svg")
+                    img.sd(src="img/linkedin.svg")
               p.name John Doe
               p.who Front-end Developer
       .latestworks(id="3").wrapper.chik
@@ -195,5 +223,11 @@ html(lang="en")
                   style.
                     .a{fill:#c0301c}
                   path.a(d='m0 9.2q0 0.1 0.1 0.2l0.5 0.5q0.1 0.1 0.3 0.1 0.1 0 0.2-0.1l4.8-4.7q0.1-0.1 0.1-0.2 0-0.1-0.1-0.2l-4.8-4.7q-0.1-0.1-0.2-0.1-0.2 0-0.3 0.1l-0.5 0.5q-0.1 0.1-0.1 0.2 0 0.2 0.1 0.3l4.1 3.9-4.1 3.9q-0.1 0.1-0.1 0.3z')
+      .doyou 
+        .wrapper.column.align-items
+          .margins
+            h2.dolike Do you like OUR WORK so far? 
+            h2.dolike Let's talk about YOUR PROJECT!
+          a.dolike-btn(href="#") Get in Touch
 
     script(src="js/scripts.js") 

@@ -20,10 +20,22 @@ const img1 = document.querySelector(".img-1"),
       img8 = document.querySelector(".img-8"),
       img9 = document.querySelector(".img-9")
 
+const getstart = document.querySelector(".getstarted"),
+      dolike = document.querySelector(".dolike-btn")
+
 const categ = [all, branding, design, development, strategy]
 const img = [img1, img2, img3, img4, img5, img6, img7, img8, img9]
 
 all.classList.add("toggle")
+
+let sdsx = function (t) {
+  t.addEventListener("click", (e) => {
+    e.preventDefault()
+  })
+}
+
+sdsx(getstart)
+sdsx(dolike)
 
 categ.forEach(item => {
   item.addEventListener("click", (e) => {

@@ -289,6 +289,45 @@ main
 
 .bro-margin
   margin-bottom: 20px
+  position: relative
+
+.photo-wrap
+  position: relative
+  margin-bottom: 20px
+  line-height: 0
+
+.bro-margin
+  width: 100%
+  height: auto
+  margin-bottom: 0
+
+.backs 
+  position: absolute
+  top: 0
+  left: 0
+  width: 100%
+  height: 100%
+  background-color: rgba(85, 85, 85, 0.6)
+  display: flex
+  justify-content: center
+  align-items: flex-end
+  opacity: 0
+  transition: opacity 0.3s ease
+
+.photo-wrap:hover .backs
+  opacity: 1
+
+.backs-flex
+  display: flex
+  gap: 5px
+  margin-bottom: 32px
+
+.sd
+  padding: 5px 10px
+  cursor: pointer
+  transition: 0.2s ease
+  &:hover
+    background-color: #c0301c
 
 .name
   font-size: 14px
@@ -306,9 +345,9 @@ main
 .right_button
   appearance: none
   border: none
-  opacity: 0.200
-  background-color: #555
+  background-color: rgba(85, 85, 85, 0.2)
   cursor: pointer
+  z-index: 2
 
 .left_button
   position: absolute
@@ -329,6 +368,10 @@ main
 //     fill: #ddd
 //     background-color: #c0301c
   
+.left_angle path,
+.right_angle path
+  fill: #ddd
+
 .left_angle,
 .right_angle
   padding: 12px 14px
@@ -372,7 +415,7 @@ main
 
   opacity: 0
   visibility: hidden
-  transition: opacity .25s ease
+  transition: opacity .25s ease, visibility .25s ease
 
 
 .img:hover .txt-img,
@@ -432,3 +475,39 @@ main
   display: flex
   flex-wrap: wrap
   gap: 30px
+
+.doyou
+  background-image: linear-gradient(rgba(192, 48, 28, 0.6), rgba(192, 48, 28, 0.6)), url('../img/bckgrnd-btm.png')
+  background-size: cover
+  background-position: center
+  background-repeat: no-repeat
+  padding: 100px 0
+
+.dolike
+  font-size: 30px
+  line-height: 44px
+  color: #fff
+  font-weight: 400
+  font-family: "Roboto Slab"
+  text-align: center
+
+.dolike-btn 
+  font-size: 18px
+  line-height: 44px
+  text-transform: uppercase
+  color: #fff
+  font-weight: 400
+  font-family: "Roboto Slab"
+  text-align: center
+  text-decoration: none
+  padding: 5px 27px
+  border-radius: 2px
+  background-color: transparent
+  border: 2px solid #fff
+  transition: 0.2s ease
+  &:hover
+    background-color: #fff
+    color: #c0301c
+
+.margins
+  margin-bottom: 50px
