@@ -8,7 +8,9 @@ const menu = document.querySelector(".menu"),
       design = document.querySelector("#vs"),
       development = document.querySelector("#gs"),
       strategy = document.querySelector("#ws"),
-      txtimg = document.querySelector(".txt-img")
+      txtimg = document.querySelector(".txt-img"),
+      hiddentxt = document.querySelectorAll(".hidden-txt"),
+      data = document.querySelectorAll(".data p")
 
 const img1 = document.querySelector(".img-1"),
       img2 = document.querySelector(".img-2"),
@@ -21,9 +23,10 @@ const img1 = document.querySelector(".img-1"),
       img9 = document.querySelector(".img-9")
 
 const getstart = document.querySelector(".getstarted"),
-      dolike = document.querySelector(".dolike-btn")
+      dolike = document.querySelector(".dolike-btn"),
+      readmore = document.querySelectorAll(".readmore")
 
-const categ = [all, branding, design, development, strategy]
+const categ = document.querySelectorAll(".categories a")
 const img = [img1, img2, img3, img4, img5, img6, img7, img8, img9]
 
 all.classList.add("toggle")
@@ -42,7 +45,7 @@ categ.forEach(item => {
     e.preventDefault()
 
     categ.forEach(b => b.classList.remove("toggle"))
-    item.classList.add("toggle")
+    item.classList.toggle("toggle")
 
     img.forEach(c => c.style.display = "none")
 
@@ -106,3 +109,27 @@ icon.addEventListener("click", () => {
     iconlast.classList.add("bigger-h")
   }
 })
+
+readmore.forEach((btn, index) => btn.addEventListener("click", e => {
+  e.preventDefault()
+
+  switch(index) {
+    case 0: 
+      hiddentxt[0].classList.toggle("block")
+      break
+    case 1:
+      hiddentxt[1].classList.toggle("block")
+      break
+  }
+}))
+
+let joker = new Date()
+let days = joker.getDate(),
+    months = joker.getMonth()
+
+let namMonths = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+
+data[0].textContent = days
+data[1].textContent = namMonths[months]
+data[2].textContent = days
+data[3].textContent = namMonths[months]
