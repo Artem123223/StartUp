@@ -11,14 +11,21 @@ html(lang="en")
         .wrapper
           .justify-between.align-items.relative
             a.logo(href="index.html") Startup 
-            .home.flex
-              a(href="#0").hometxt Home
-              a(href="#1").hometxt Services
-              a(href="#2").hometxt About
-              a(href="#3").hometxt Works
-              a.hometxt Blog
-              a.hometxt Clients
-              a.hometxt Contact
+            .jegernout
+              .dark-bgc
+              .burger
+                  span.bord.b1
+                  span.bord.b2
+                  span.bord.b3
+              .menu.flex
+                a(href="#0").hometxt Home
+                a(href="#1").hometxt Services
+                a(href="#2").hometxt About
+                a(href="#3").hometxt Works
+                a(href="#4").hometxt Blog
+                a(href="#5").hometxt Clients
+                a(href="#6").hometxt Contact
+                p.cancel X
       .wrapper
         .welcome 
           .hi
@@ -26,9 +33,9 @@ html(lang="en")
             p.ur Your Favourite Creative Agency Template
             p.getstart
               a.getstarted(href="#") Get Started
-    main 
+    main(id="1")
       .wrapper
-        .services(id="1")
+        .services
           h2.h2-txt Services
           hr.hr-underh2
           p.underh2-txt We offer ipsum dolor sit amet, consetetur sadipscing elitr amet
@@ -118,15 +125,15 @@ html(lang="en")
         h2.h2-txt Latest Works
         hr.hr-underh2
         .categories
-          a(href="#" id="ds") All
-          a(href="#" id="ks") Branding
-          a(href="#" id="vs") Design
-          a(href="#" id="gs") Development
-          a(href="#" id="ws") Strategy
+          a(href="#" id="all") All
+          a(href="#" id="branding") Branding
+          a(href="#" id="design") Design
+          a(href="#" id="development") Development
+          a(href="#" id="strategy") Strategy
         .items 
-          .img.img-1(tabindex="0")
+          figure.img(tabindex="0" data-category="branding")
             img.jsc(src="img/hair.png", alt="волосся")
-            .txt-img
+            figcaption.txt-img
               p.name-item Hair Dresser
               p.name-categ Branding
               label.sdsx
@@ -135,9 +142,9 @@ html(lang="en")
                   style.
                     .a{fill:#c0301c}
                   path.a(d='m0 9.2q0 0.1 0.1 0.2l0.5 0.5q0.1 0.1 0.3 0.1 0.1 0 0.2-0.1l4.8-4.7q0.1-0.1 0.1-0.2 0-0.1-0.1-0.2l-4.8-4.7q-0.1-0.1-0.2-0.1-0.2 0-0.3 0.1l-0.5 0.5q-0.1 0.1-0.1 0.2 0 0.2 0.1 0.3l4.1 3.9-4.1 3.9q-0.1 0.1-0.1 0.3z')
-          .img.img-2(tabindex="0")
+          figure.img(tabindex="0" data-category="design")
             img.jsc(src="img/bird.png", alt="птаха")
-            .txt-img
+            figcaption.txt-img
               p.name-item Paper Bird
               p.name-categ Design
               label.sdsx
@@ -146,9 +153,9 @@ html(lang="en")
                   style.
                     .a{fill:#c0301c}
                   path.a(d='m0 9.2q0 0.1 0.1 0.2l0.5 0.5q0.1 0.1 0.3 0.1 0.1 0 0.2-0.1l4.8-4.7q0.1-0.1 0.1-0.2 0-0.1-0.1-0.2l-4.8-4.7q-0.1-0.1-0.2-0.1-0.2 0-0.3 0.1l-0.5 0.5q-0.1 0.1-0.1 0.2 0 0.2 0.1 0.3l4.1 3.9-4.1 3.9q-0.1 0.1-0.1 0.3z')
-          .img.img-3(tabindex="0")
+          figure.img(tabindex="0" data-category="branding design")
             img.jsc(src="img/work.png", alt="робоче місце")
-            .txt-img
+            figcaption.txt-img
               p.name-item Workspace
               p.name-categ Branding, Design
               label.sdsx
@@ -157,9 +164,9 @@ html(lang="en")
                   style.
                     .a{fill:#c0301c}
                   path.a(d='m0 9.2q0 0.1 0.1 0.2l0.5 0.5q0.1 0.1 0.3 0.1 0.1 0 0.2-0.1l4.8-4.7q0.1-0.1 0.1-0.2 0-0.1-0.1-0.2l-4.8-4.7q-0.1-0.1-0.2-0.1-0.2 0-0.3 0.1l-0.5 0.5q-0.1 0.1-0.1 0.2 0 0.2 0.1 0.3l4.1 3.9-4.1 3.9q-0.1 0.1-0.1 0.3z')
-          .img.img-4(tabindex="0")
+          figure.img(tabindex="0" data-category="development strategy")
             img.jsc(src="img/camera.png", alt="фотоапарат")
-            .txt-img
+            figcaption.txt-img
               p.name-item Camera
               p.name-categ Development, Strategy
               label.sdsx
@@ -168,9 +175,9 @@ html(lang="en")
                   style.
                     .a{fill:#c0301c}
                   path.a(d='m0 9.2q0 0.1 0.1 0.2l0.5 0.5q0.1 0.1 0.3 0.1 0.1 0 0.2-0.1l4.8-4.7q0.1-0.1 0.1-0.2 0-0.1-0.1-0.2l-4.8-4.7q-0.1-0.1-0.2-0.1-0.2 0-0.3 0.1l-0.5 0.5q-0.1 0.1-0.1 0.2 0 0.2 0.1 0.3l4.1 3.9-4.1 3.9q-0.1 0.1-0.1 0.3z')
-          .img.img-5(tabindex="0")
+          figure.img(tabindex="0" data-category="development")
             img.jsc(src="img/bike.png", alt="велосипед")
-            .txt-img
+            figcaption.txt-img
               p.name-item Bike
               p.name-categ Development
               label.sdsx
@@ -179,9 +186,9 @@ html(lang="en")
                   style.
                     .a{fill:#c0301c}
                   path.a(d='m0 9.2q0 0.1 0.1 0.2l0.5 0.5q0.1 0.1 0.3 0.1 0.1 0 0.2-0.1l4.8-4.7q0.1-0.1 0.1-0.2 0-0.1-0.1-0.2l-4.8-4.7q-0.1-0.1-0.2-0.1-0.2 0-0.3 0.1l-0.5 0.5q-0.1 0.1-0.1 0.2 0 0.2 0.1 0.3l4.1 3.9-4.1 3.9q-0.1 0.1-0.1 0.3z')
-          .img.img-6(tabindex="0")
+          figure.img(tabindex="0" data-category="development")
             img.jsc(src="img/note.png", alt="блокнот")
-            .txt-img
+            figcaption.txt-img
               p.name-item Note
               p.name-categ Development
               label.sdsx
@@ -190,9 +197,9 @@ html(lang="en")
                   style.
                     .a{fill:#c0301c}
                   path.a(d='m0 9.2q0 0.1 0.1 0.2l0.5 0.5q0.1 0.1 0.3 0.1 0.1 0 0.2-0.1l4.8-4.7q0.1-0.1 0.1-0.2 0-0.1-0.1-0.2l-4.8-4.7q-0.1-0.1-0.2-0.1-0.2 0-0.3 0.1l-0.5 0.5q-0.1 0.1-0.1 0.2 0 0.2 0.1 0.3l4.1 3.9-4.1 3.9q-0.1 0.1-0.1 0.3z')
-          .img.img-7(tabindex="0")
+          figure.img(tabindex="0" data-category="branding")
             img.jsc(src="img/table.png", alt="робочий стіл")
-            .txt-img
+            figcaption.txt-img
               p.name-item Table With Laptop
               p.name-categ Branding
               label.sdsx
@@ -201,9 +208,9 @@ html(lang="en")
                   style.
                     .a{fill:#c0301c}
                   path.a(d='m0 9.2q0 0.1 0.1 0.2l0.5 0.5q0.1 0.1 0.3 0.1 0.1 0 0.2-0.1l4.8-4.7q0.1-0.1 0.1-0.2 0-0.1-0.1-0.2l-4.8-4.7q-0.1-0.1-0.2-0.1-0.2 0-0.3 0.1l-0.5 0.5q-0.1 0.1-0.1 0.2 0 0.2 0.1 0.3l4.1 3.9-4.1 3.9q-0.1 0.1-0.1 0.3z')
-          .img.img-8(tabindex="0")
+          figure.img(tabindex="0" data-category="strategy design")
             img.jsc(src="img/paper.png", alt="інструменти та папір")
-            .txt-img
+            figcaption.txt-img
               p.name-item Papers And Instruments
               p.name-categ Strategy, Design
               label.sdsx
@@ -212,9 +219,9 @@ html(lang="en")
                   style.
                     .a{fill:#c0301c}
                   path.a(d='m0 9.2q0 0.1 0.1 0.2l0.5 0.5q0.1 0.1 0.3 0.1 0.1 0 0.2-0.1l4.8-4.7q0.1-0.1 0.1-0.2 0-0.1-0.1-0.2l-4.8-4.7q-0.1-0.1-0.2-0.1-0.2 0-0.3 0.1l-0.5 0.5q-0.1 0.1-0.1 0.2 0 0.2 0.1 0.3l4.1 3.9-4.1 3.9q-0.1 0.1-0.1 0.3z')
-          .img.img-9(tabindex="0")
+          figure.img(tabindex="0" data-category="branding")
             img.jsc(src="img/anything.png", alt="карточка")
-            .txt-img
+            figcaption.txt-img
               p.name-item Anything, maybe card
               p.name-categ Branding
               label.sdsx
@@ -228,8 +235,8 @@ html(lang="en")
           .margins
             h2.dolike Do you like OUR WORK so far? 
             h2.dolike Let's talk about YOUR PROJECT!
-          a.dolike-btn(href="#") Get in Touch
-      .blogpost.wrapper.column.align-items
+          a(href="#6").dolike-btn Get in Touch
+      .blogpost(id="4").wrapper.column.align-items
         h2.h2-txt.chik Recent blog posts
         hr.hr-underh2
         p.underh2-txt We offer ipsum dolor sit amet, consetetur sadipscing elitr amet
@@ -271,5 +278,86 @@ html(lang="en")
                 p.hidden-txt Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod teduntlabore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et erebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit am Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidulabore et dolore aliquyam erat, sed diam
 
               a(href="#").readmore read more 
-
+      .slider-logos(id="5").chik.column.align-items
+        .slider-logs.align-items
+          img(src="img/deorham.png", alt="deorham")
+          img(src="img/ratings.png", alt="ratings")
+          img(src="img/malikmedia.png", alt="malikmedia")
+          img(src="img/bcause.png", alt="bcause")
+          img(src="img/wompeby.png", alt="wompeby")
+        p.txt-log Hvaing placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum”
+        p.txt-logs John Doe, Google Inc.
+        .s
+          a(href="#" id="s1").s1 
+          a(href="#" id="s2").s2 
+          a(href="#" id="s3").s3 
+      .getintouch(id="6").wrapper
+        .column.align-items
+          h2.h2-txt.chik Get in touch
+          hr.hr-underh2
+          p.underh2-txt We offer ipsum dolor sit amet, consetetur sadipscing elitr amet
+        .formandtxt.justify-between
+          .info 
+            .first-info
+              .hight
+                img(src="img/marker.svg", alt="Позначка")
+                p.address Address
+              .txt-info 
+                p.jeker 312, 7th Ave, New York
+                p.jeker NY 101200, United States of America
+            .second-info
+              .hight
+                img(src="img/phone.svg", alt="Позначка")
+                p.address Hotline (24x7)
+              .txt-info 
+                p.jeker +65 0052 300, +65 88251 210
+                p.jeker +88 01723 511 340
+            .third-info
+              .hight
+                img(src="img/email.svg", alt="Позначка")
+                p.address E-mail
+              .txt-info 
+                p.jeker shapedtheme@gmail.com
+                p.jeker khalilkode@gmail.com
+          .form
+            form(action="#" method="post")
+              .jokers
+                p
+                  label
+                    input.class(type="text" name="userName" placeholder="Your Name" required)
+                p
+                  label
+                    input.class(type="email" name="userMail" placeholder="Your E-mail" required)
+              .jokers
+                p
+                  label
+                    input.class(type="text" name="userSubject" placeholder="Your subject" required)
+                p
+                  label
+                    input.class(type="text" name="companyName" placeholder="Company name" required)
+              p.chks
+                label
+                  textarea.class(name="userMessage" placeholder="Write Your Message" required)
+              p.sc
+                label
+                  button.vasya(type="submit") Send message
+                label
+                  span.sw * 
+                  span We’ll contact you as as possible. We don’t reply on Monday.
+    footer.column.align-items
+      .birds 
+        a(href="#" id="sdx") 
+          p
+            img(src="img/foottwitter.svg", alt="twitter")
+        a(href="#" id="sdx") 
+          p
+            img(src="img/foottwitter.svg", alt="twitter")
+        a(href="#" id="sdx") 
+          p
+            img(src="img/foottwitter.svg", alt="twitter")
+        a(href="#" id="sdx") 
+          p
+            img(src="img/foottwitter.svg", alt="twitter")
+      hr.hr-foot
+      p.foot-txt © 2015 Startup, Designed by ShapedTheme
     script(src="js/scripts.js") 

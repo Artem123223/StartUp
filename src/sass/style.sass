@@ -1,3 +1,5 @@
+@import components/mixin
+  
 @font-face
   font-family: 'Myriad Pro'
   src: url('../fonts/MyriadPro-Regular.woff2') format('woff2'), url('../fonts/MyriadPro-Regular.woff') format('woff')
@@ -44,6 +46,9 @@
   margin: 0
   padding: 0
 
+html
+  scroll-behavior: smooth
+
 .wrapper
   max-width: 1140px
   margin: 0 auto
@@ -54,6 +59,7 @@ header
   background-position: center
   background-repeat: no-repeat
   width: 100%
+  z-index: 5  
 
 .menu
   position: fixed
@@ -87,7 +93,7 @@ header
 .relative
   position: static
 
-.home
+.menu
   gap: 35px
 
 .logo
@@ -138,8 +144,9 @@ h1
   font-size: 24px
   line-height: 24px
   color: #fff
-  font-weight: 100
+  font-weight: 400
   margin-bottom: 50px
+  font-family: "Montserrat"
 
 .getstart
   padding: 17px 35px
@@ -384,7 +391,9 @@ main
 .blogpost,
 .latestworks,
 .thre-serv,
-.cards-peoples
+.cards-peoples,
+.s,
+.getintouch
   margin-bottom: 100px
 
 .name-item
@@ -408,7 +417,6 @@ main
   position: absolute
   inset: 0
   background-color: rgba(192, 48, 28, 0.7)
-  z-index: 3
 
   display: flex
   justify-content: center
@@ -600,3 +608,194 @@ h4
 
 .block
   display: block
+
+.slider-logos
+  background-color: #f8f8f8
+
+.slider-logs
+  gap: 60px
+  margin-bottom: 70px
+
+.txt-log
+  max-width: 790px
+  font-size: 18px
+  line-height: 30px
+  color: #555
+  font-weight: 400
+  font-family: "Roboto Slab"
+  text-align: center
+  margin-bottom: 40px
+
+.txt-logs
+  font-size: 21px
+  line-height: 30px
+  color: #555
+  font-weight: 400
+  font-family: "Roboto Slab"
+  text-align: center
+  margin-bottom: 40px
+  
+.s1, .s2, .s3
+  width: 13px
+  height: 13px
+  border-radius: 6px
+  background-color: #ddd
+  transition: 0.2s ease
+  &:hover
+    background-color: #bebebe
+
+.s
+  display: flex
+  gap: 7px
+  align-items: center
+
+.backred
+  background-color: #c0301c !important
+
+.info
+  display: flex
+  flex-direction: column
+  gap: 33px
+
+.hight
+  display: flex
+  gap: 20px
+  align-items: center
+  margin-bottom: 10px
+
+.address
+  font-size: 14px
+  text-transform: uppercase
+  color: #555
+  font-family: "Myriad Pro"
+  text-align: center
+
+.txt-info
+  padding-left: 27px
+
+.jeker
+  font-size: 12px
+  line-height: 20px
+  color: #555
+  font-weight: 400
+  font-family: "Roboto Slab"
+
+.form
+  min-width: 730px
+
+.class
+  appearance: none
+  outline: none
+  border: 1px solid #555
+  padding: 16px 18px
+  font-size: 14px
+  line-height: 20px
+  text-transform: uppercase
+  color: #555
+  font-weight: 400
+  font-family: "Roboto Slab"
+  transition: 0.3s ease
+  box-sizing: border-box
+  &:hover
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15)
+    transform: translateY(-2px)
+    border-color: #c0301c
+    color: #c0301c
+  &:focus
+    border: 1px solid #c0301c
+
+.jokers
+  display: flex
+  gap: 30px
+  margin-bottom: 20px
+
+.jokers p,
+.class
+  width: 100%
+
+textarea
+  min-height: 104px
+  max-height: 150px
+  resize: vertical
+
+.chks
+  margin-bottom: 20px
+
+.vasya
+  appearance: none
+  font-size: 12px
+  letter-spacing: 1px
+  line-height: 20px
+  text-transform: uppercase
+  color: #555
+  font-weight: 400
+  font-family: "Roboto Slab"
+  padding: 15px 36px
+  background-color: #fff
+  border: 1px solid #555
+  transition: 0.2s ease
+  cursor: pointer
+  &:hover
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15)
+    transform: translateY(-2px)
+    border-color: #c0301c
+    color: #fff
+    background-color: #c0301c
+
+.sw
+  font-size: 12px
+  line-height: 20px
+  color: #c0301c
+  font-weight: 400
+  font-family: "Roboto Slab"
+
+.sw ~ span
+  font-size: 12px
+  line-height: 20px
+  color: #555
+  font-weight: 400
+  font-family: "Roboto Slab"
+
+.sc
+  display: flex
+  gap: 34px
+  align-items: center
+
+footer
+  background-color: #c0301c
+  padding: 100px
+
+
+.hr-foot
+  width: 50px
+  border: none
+  border-top: 2px solid #fff
+  margin: 30px 0
+
+.foot-txt
+  font-size: 12px
+  line-height: 20px
+  text-transform: uppercase
+  color: #ffffff
+  font-weight: 400
+  font-family: "Roboto Slab"
+
+#sdx
+  text-decoration: none
+  display: inline-block
+  width: 35px
+  height: 35px
+  border-radius: 20px
+  background-color: #c0301c
+  border: 2px solid #fff
+
+.birds a p
+  display: flex
+  align-items: center
+  justify-content: center
+  width: 100%
+  height: 100%
+
+.birds
+  display: flex
+  gap: 14px
