@@ -1,3 +1,19 @@
+const dark = document.querySelector(".dark-bgc"),
+      burger = document.querySelector(".burger"),
+      home = document.querySelector(".home"),
+      cancel = document.querySelector(".cancel")
+
+burger.addEventListener("click", function() {
+    home.style.right = "7%";
+    dark.style.display = "block"
+})
+function cancelBurger() {
+    home.style.right = "-200%";
+    dark.style.display = "none"
+}
+cancel.addEventListener("click", cancelBurger)
+dark.addEventListener("click", cancelBurger)
+
 const menu = document.querySelector(".menu"),
       icon = document.querySelector("#b"),
       iconstart = document.querySelector("#icon-1"),
