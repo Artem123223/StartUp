@@ -4,7 +4,7 @@ const dark = document.querySelector(".dark-bgc"),
       cancel = document.querySelector(".cancel")
 
 burger.addEventListener("click", function() {
-    home.style.right = "7%";
+    home.style.right = "0";
     dark.style.display = "block"
 })
 function cancelBurger() {

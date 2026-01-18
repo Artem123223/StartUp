@@ -50,13 +50,23 @@ html
   scroll-behavior: smooth
   font-size: 1px
 
+html, body
+  overflow-x: hidden
+
+*
+  box-sizing: border-box
+
+img
+  max-width: 100%
+  height: auto
+
 .wrapper
   max-width: 1140px
   margin: 0 auto
   +media(320)
     padding-left: 10px
     padding-right: 10px
-  +media(1440)
+  +media(768)
     padding-left: 0
     padding-right: 0
   
@@ -74,9 +84,12 @@ header
   left: 50%
   transform: translateX(-50%)
   width: 100%
-  padding: 20px 30px
   z-index: 2
   transition: background-color 0.3s, backdrop-filter 0.3s
+  +media(320)
+    padding: 15px 0
+  +media(768)
+    padding: 20px 30px
 
 .menu.active
   background-color: rgba(253, 38, 38, 0.274)
@@ -442,7 +455,6 @@ main
   visibility: hidden
   transition: opacity .25s ease, visibility .25s ease
 
-
 .img:hover .txt-img,
 .img:focus .txt-img
   opacity: 1
@@ -453,9 +465,9 @@ main
   cursor: pointer
   .jsc
     +media(320)
-      max-width: 95vw
+      min-width: 95vw
     +media(768)
-      max-width: auto
+      min-width: auto
 
 .sdsx
   padding: 5px 20px
@@ -576,6 +588,9 @@ main
       width: 95vw
     +media(768)
       width: auto
+
+.read img
+  max-height: 322px
 
 .read
   display: flex
@@ -899,7 +914,15 @@ footer
   right: 10px
   cursor: pointer
   color: #c0301c
+  +media(320)
+    right: 10px
+  +media(768)
+    right: -200%
 
+.mcs
+  display: block
+  +media(768)
+    display: flex
   
 .home
   position: absolute
@@ -907,7 +930,7 @@ footer
   gap: 50px
   top: 0
   right: -200%
-  width: 45vw
+  width: 50vw
   background-color: #fff
   border-left: 2px solid #c0301c
   transition: all .5s ease
