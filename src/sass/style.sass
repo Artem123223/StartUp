@@ -49,12 +49,11 @@
 html
   scroll-behavior: smooth
   font-size: 1px
+  +media(2300)
+    zoom: 1.5
 
 html, body
   overflow-x: hidden
-
-*
-  box-sizing: border-box
 
 img
   max-width: 100%
@@ -66,7 +65,7 @@ img
   +media(320)
     padding-left: 10px
     padding-right: 10px
-  +media(768)
+  +media(1200)
     padding-left: 0
     padding-right: 0
   
@@ -76,7 +75,7 @@ header
   background-position: center
   background-repeat: no-repeat
   width: 100%
-  z-index: 5  
+  z-index: 5
 
 .menu
   position: fixed
@@ -466,8 +465,12 @@ main
   .jsc
     +media(320)
       min-width: 95vw
+    +media(600)
+      min-width: auto
+      max-width: 40vw
     +media(768)
       min-width: auto
+      max-width: none
 
 .sdsx
   padding: 5px 20px
@@ -524,7 +527,12 @@ main
 .items
   display: flex
   flex-wrap: wrap
+  justify-content: center
   gap: 30px
+  +media(320)
+    gap: 20px
+  +media(1000)
+    gap: 30px
 
 .doyou
   background-image: linear-gradient(rgba(192, 48, 28, 0.6), rgba(192, 48, 28, 0.6)), url('../img/bckgrnd-btm.png')
@@ -737,7 +745,7 @@ h4
 .form
   +media(320)
     min-width: auto
-  +media(768)
+  +media(1000)
     min-width: 730px
   .jokers
     +media(320)
@@ -822,11 +830,14 @@ textarea
   display: flex
   gap: 34px
   align-items: center
+  +media(320)
+    gap: 10px
+  +media(1000)
+    gap: 34px
 
 footer
   background-color: #c0301c
   padding: 100px
-
 
 .hr-foot
   width: 50px
@@ -861,6 +872,13 @@ footer
 .birds
   display: flex
   gap: 14px
+  a path
+    transition: 0.2s ease
+  a:hover path
+    fill: #c0301c
+  #sdx:hover 
+    background-color: #fff
+  
 
 .dark-bgc
   display: none
