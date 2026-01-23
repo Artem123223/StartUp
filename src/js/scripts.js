@@ -111,17 +111,16 @@ icon.addEventListener("click", () => {
 })
 
 readmore.forEach((btn, index) => btn.addEventListener("click", e => {
-  e.preventDefault()
+  e.preventDefault();
+  
+  hiddentxt[index].classList.toggle("block");
 
-  switch(index) {
-    case 0: 
-      hiddentxt[0].classList.toggle("block")
-      break
-    case 1:
-      hiddentxt[1].classList.toggle("block")
-      break
+  if (hiddentxt[index].classList.contains("block")) {
+    btn.textContent = "close";
+  } else {
+    btn.textContent = "read more";
   }
-}))
+}));
 
 let joker = new Date()
 let days = joker.getDate(),
@@ -137,3 +136,31 @@ data[3].textContent = namMonths[months]
 inputs.forEach(btn => btn.addEventListener("change", () => {
   btn.classList.toggle("brdr")
 }))
+
+const header = document.querySelector("header"),
+      bg = document.querySelector(".bg-parallax")
+
+header.addEventListener("mousemove", function(e) {
+  const width = window.innerWidth
+  const height = window.innerHeight
+  const mouseX = e.clientX,
+        mouseY = e.clientY
+  const moveX = (mouseX / width * 30) - 15,
+        moveY = (mouseY / height * 30) - 15
+
+  bg.style.transform = `translate(${moveX}px, ${moveY}px)`
+})
+
+const doyou = document.querySelector(".doyou"),
+      paralax = document.querySelector(".bg-paralax")
+
+doyou.addEventListener("mousemove", (e) => {
+  const width = window.innerWidth
+  const height = window.innerHeight
+  const mouseX = e.clientX,
+        mouseY = e.clientY
+  const moveX = (mouseX / width * 30) - 15,
+        moveY = (mouseY / height * 30) - 15
+
+  paralax.style.transform = `translate(${moveX}px, ${moveY}px)`
+})
