@@ -23,7 +23,8 @@ const menu = document.querySelector(".menu"),
       hiddentxt = document.querySelectorAll(".hidden-txt"),
       data = document.querySelectorAll(".data p"),
       items = document.querySelectorAll(".items .img"),
-      inputs = document.querySelectorAll("form .class")
+      inputs = document.querySelectorAll("form .class"),
+      scrollto = document.querySelectorAll(".home a")
 
 const getstart = document.querySelector(".getstarted"),
       dolike = document.querySelector(".dolike-btn"),
@@ -31,6 +32,16 @@ const getstart = document.querySelector(".getstarted"),
       sdx = document.querySelector("#sdx")
 
 const categ = document.querySelectorAll(".categories a")
+
+const blocks = [
+    document.querySelector("#zero"),
+    document.querySelector("#one"),
+    document.querySelector("#two"),
+    document.querySelector("#three"),
+    document.querySelector("#four"),
+    document.querySelector("#five"),
+    document.querySelector("#six")
+];
 
 all.classList.add("toggle")
 
@@ -163,4 +174,82 @@ doyou.addEventListener("mousemove", (e) => {
         moveY = (mouseY / height * 30) - 15
 
   paralax.style.transform = `translate(${moveX}px, ${moveY}px)`
+})
+
+scrollto.forEach((btn, index) => btn.addEventListener("click", (e) => {
+  e.preventDefault()
+
+  const takeblock = blocks[index]
+  const position = takeblock.offsetTop
+
+  window.scrollTo({
+    top: position,
+    behavior: "smooth"
+  });
+}))
+
+const leftbtn = document.querySelector(".left_button"),
+      rightbtn = document.querySelector(".right_button")
+
+const first = document.querySelector(".card1"),
+      second = document.querySelector(".card2"),
+      third = document.querySelector(".card3"),
+      fourth = document.querySelector(".card4"),
+      cards = document.querySelector(".cards"),
+      allcards = document.querySelectorAll(".cards .nb")
+
+leftbtn.addEventListener("click", (e) => {
+  let takebtn = cards.children[0].cloneNode(true)
+  cards.children[0].remove()
+  cards.insertAdjacentElement("beforeend", takebtn)
+})
+
+console.log(cards.children)
+
+rightbtn.addEventListener("click", (e) => {
+  let takebtn = cards.children[4].cloneNode(true)
+  cards.children[4].remove()
+  cards.insertAdjacentElement("afterbegin", takebtn)
+})
+
+const parent = document.querySelector(".slider-logs"),
+      txt = document.querySelector(".txt-logs")
+let x = 0
+
+let slider = setInterval(() => {
+  x++
+  let goback = parent.children[0].cloneNode(true)
+  parent.children[0].remove()
+  parent.insertAdjacentElement("beforeend", goback)
+  if(x == 1) txt.textContent = "Artem"
+  if(x == 2) txt.textContent = "HashTag"
+  if(x == 3) txt.textContent = "Google"
+  if(x == 4) txt.textContent = "Vasya"
+  if(x == 5) txt.textContent = "John Doe, Google Inc."
+  if(x == 6) {
+    txt.textContent = "Artem"
+    x = 1
+  }
+}, 2000)
+
+parent.addEventListener("mouseenter", () => {
+  clearInterval(slider)
+})
+
+parent.addEventListener("mouseleave", () => {
+  slider = setInterval(() => {
+    x++
+    let goback = parent.children[0].cloneNode(true)
+    parent.children[0].remove()
+    parent.insertAdjacentElement("beforeend", goback)
+    if(x == 1) txt.textContent = "Artem"
+    if(x == 2) txt.textContent = "HashTag"
+    if(x == 3) txt.textContent = "Google"
+    if(x == 4) txt.textContent = "Vasya"
+    if(x == 5) txt.textContent = "John Doe, Google Inc."
+    if(x == 6) {
+      txt.textContent = "Artem"
+      x = 1
+    }
+  }, 2000)
 })

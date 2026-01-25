@@ -47,7 +47,6 @@
   padding: 0
 
 html
-  scroll-behavior: smooth
   font-size: 1px
   +media(2300)
     zoom: 1.5
@@ -328,14 +327,31 @@ main
   font-family: "Roboto Slab"
 
 .cards-peoples
+  width: 100%
+  overflow: hidden
+  transform: translate(0, 0)
+
+.cards
   gap: 29px
   position: relative
+  width: 100%
+  overflow: hidden
+  height: auto
+  display: flex
+  transform: translate(0, 0)
+  transition: all 0.2s ease
 
 .card1,
 .card2, 
 .card3, 
-.card4
+.card4,
+.card5
   flex-direction: column
+  height: auto
+  +media(320)
+    min-width: 135px
+  +media(768)
+    min-width: 263px
 
 .bro-margin
   margin-bottom: 20px
@@ -384,6 +400,7 @@ main
   text-transform: uppercase
   color: #555
   margin-bottom: 10px
+  font-family: "Myriad Pro"
 
 .who
   font-size: 13px
@@ -398,6 +415,10 @@ main
   background-color: rgba(85, 85, 85, 0.2)
   cursor: pointer
   z-index: 2
+  transition: all 0.2s ease
+  &:hover
+    background-color: #c0301c
+
 
 .left_button
   position: absolute
