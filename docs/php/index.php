@@ -2,6 +2,8 @@
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
+$config = require __DIR__ . '/config.php';
+
 if($_POST) {
     $name = $_POST['name'] ?? 'Не вказано';
     $email = $_POST['mail'] ?? 'Не вказано';
@@ -9,8 +11,8 @@ if($_POST) {
     $companyName = $_POST['compName'] ?? 'Не вказано';
     $message = $_POST['message'] ?? 'Не вказано';
 
-    $token = "8460199370:AAGlEY16py9tVacMKpGGGXh961frLc4rG0w";
-    $chat_id = 1911483244;
+    $token = $config['bot_token'];
+    $chat_id = $config['chat_id'];
 
     $txt = "<b>Your details \xE2\x9C\x89</b>\n";
     $txt .= "<b>Name:</b> " . strip_tags($name) . "\n";
