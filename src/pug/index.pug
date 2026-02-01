@@ -4,15 +4,45 @@ html(lang="en")
     meta(charset="UTF-8")
     meta(name="viewport", content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0")
     link(rel="stylesheet", href="css/style.css")
+    link(rel='preconnect' href='https://fonts.googleapis.com')
+    link(rel='preconnect' href='https://fonts.gstatic.com' crossorigin='')
+    link(href='https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap' rel='stylesheet')
     title StartUp
   body
+    .popap
+      .first
+        .justify-between.align-items
+          h3.h3 Cart
+          a(href="#").cance X
+        hr.xc
+      .inBlocks
+      .second
+        hr.xc
+        .justify-between.align-items 
+          p.sum.cance Sum: 0₴
+          button.pidt(type="button") Confirm
+    .confirmBlock
+      .first
+        h2.cance Confirm
+        hr.xr
+      .infs
+        p.userName
+        p.userMail
+        p.userSubj
+        p.userComp
+        p.userMess
+      .second
+        hr.xr
+        .buttonsFor
+          button.bad(type="button") Cancel
+          button.cool(type="button") Send Message
     header(id="zero")
       .bg-parallax
       .menu
         .wrapper
           .justify-between.align-items.relative.fuc.content
             a.logo(href="index.html") Startup 
-            .jegernout
+            .jegernout.align-items
               .dark-bgc
               .burger
                   span.bord.b1
@@ -27,6 +57,15 @@ html(lang="en")
                 a(href="#").hometxt Clients
                 a(href="#").hometxt Contact
                 p.cancel X
+              a.casa(href="#")
+                svg(width='50px' height='50px' viewbox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg')
+                  g#SVGRepo_bgCarrier(stroke-width='0')
+                    g#SVGRepo_tracerCarrier(stroke-linecap='round' stroke-linejoin='round')
+                      g#SVGRepo_iconCarrier
+                        path(d='M10.0234 2C9.05694 2 8.27344 2.7835 8.27344 3.75C8.27344 4.7165 9.05694 5.5 10.0234 5.5H14.0234C14.9899 5.5 15.7734 4.7165 15.7734 3.75C15.7734 2.7835 14.9899 2 14.0234 2H10.0234Z' fill='#ffffff')
+                        path(d='M3.88671 16.2052C3.02876 12.7734 2.59979 11.0575 3.50062 9.90376C4.40145 8.75 6.17016 8.75 9.70756 8.75H14.3382C17.8757 8.75 19.6444 8.75 20.5452 9.90376C21.446 11.0575 21.0171 12.7734 20.1591 16.2052C19.6134 18.3879 19.3406 19.4792 18.5268 20.1146C17.713 20.75 16.5881 20.75 14.3382 20.75H9.70756C7.45771 20.75 6.33278 20.75 5.519 20.1146C4.70521 19.4792 4.43238 18.3879 3.88671 16.2052Z' fill='#ffffff')
+                        path(d='M15.6039 4.5024C15.7126 4.2745 15.7734 4.0194 15.7734 3.75009C15.7734 3.48204 15.7132 3.22806 15.6055 3.00098C16.289 3.00595 16.8217 3.03732 17.2973 3.22318C17.8655 3.44525 18.3597 3.82275 18.7234 4.31251C19.0903 4.80659 19.2626 5.43988 19.4996 6.31153L19.546 6.4819L20.0587 9.44488C19.6501 9.16295 19.1231 8.99542 18.4414 8.89587L18.0801 6.80786C17.7964 5.76815 17.6934 5.44141 17.5191 5.20683C17.3233 4.94312 17.0572 4.73985 16.7512 4.62027C16.5314 4.53436 16.2658 4.50909 15.6039 4.5024Z' fill='#ffffff')
+                        path(d='M8.44142 3.00098C8.3337 3.22807 8.27344 3.48204 8.27344 3.75009C8.27344 4.0194 8.33427 4.2745 8.44294 4.5024C7.78109 4.50909 7.51551 4.53436 7.29571 4.62027C6.98976 4.73985 6.72365 4.94312 6.5278 5.20683C6.35359 5.44141 6.25059 5.76815 5.96681 6.80786L5.60551 8.89578C4.92397 8.99527 4.39697 9.16269 3.98828 9.44442L4.50092 6.4819L4.54731 6.31154C4.78439 5.43989 4.95663 4.80659 5.32356 4.31251C5.68728 3.82275 6.18149 3.44525 6.74968 3.22318C7.22521 3.03733 7.75793 3.00595 8.44142 3.00098Z' fill='#ffffff')
       .wrapper
         .welcome 
           .hi
@@ -78,62 +117,63 @@ html(lang="en")
                 style.
                   .a{fill:#ddd}
                 path.a(d='m8 1.2q0-0.2-0.1-0.4l-0.7-0.7q-0.2-0.1-0.3-0.1-0.2 0-0.4 0.1l-6.4 6.6q-0.1 0.1-0.1 0.3 0 0.2 0.1 0.3l6.4 6.6q0.2 0.1 0.4 0.1 0.1 0 0.3-0.1l0.7-0.7c0-0.1 0.1-0.3 0.1-0.4q0-0.1-0.1-0.3l-5.4-5.5 5.4-5.5q0.1-0.2 0.1-0.3z')
-            .cards.align-items.justify-between
-              .card1.align-items.nb
-                .photo-wrap
-                  img.bro-margin(src="img/uddin.png")
-                  .backs
-                    .backs-flex
-                      img.sd(src="img/facebook.svg")
-                      img.sd(src="img/twitter.svg")
-                      img.sd(src="img/google.svg")
-                      img.sd(src="img/linkedin.svg")
-                p.name Md. Khalil Uddin
-                p.who Head of Ideas
-              .card2.align-items.nb
-                .photo-wrap
-                  img.bro-margin(src="img/miah.png")
-                  .backs
-                    .backs-flex
-                      img.sd(src="img/facebook.svg")
-                      img.sd(src="img/twitter.svg")
-                      img.sd(src="img/google.svg")
-                      img.sd(src="img/linkedin.svg")
-                p.name Rubel Miah
-                p.who Lead WordPress Developer
-              .card3.align-items.nb
-                .photo-wrap
-                  img.bro-margin(src="img/mia.png")
-                  .backs
-                    .backs-flex
-                      img.sd(src="img/facebook.svg")
-                      img.sd(src="img/twitter.svg")
-                      img.sd(src="img/google.svg")
-                      img.sd(src="img/linkedin.svg")
-                p.name Shamim Mia
-                p.who Sr. Web Developer
-              .card4.align-items.nb
-                .photo-wrap
-                  img.bro-margin(src="img/doe.png")
-                  .backs
-                    .backs-flex
-                      img.sd(src="img/facebook.svg")
-                      img.sd(src="img/twitter.svg")
-                      img.sd(src="img/google.svg")
-                      img.sd(src="img/linkedin.svg")
-                p.name John Doe
-                p.who Front-end Developer
-              .card5.align-items.nb
-                .photo-wrap
-                  img.bro-margin(src="img/cat.jpg")
-                  .backs
-                    .backs-flex
-                      img.sd(src="img/facebook.svg")
-                      img.sd(src="img/twitter.svg")
-                      img.sd(src="img/google.svg")
-                      img.sd(src="img/linkedin.svg")
-                p.name Artem
-                p.who The Best
+            .full-card
+              .cards.align-items.justify-between
+                .card1.align-items.nb
+                  .photo-wrap
+                    img.bro-margin(src="img/uddin.png")
+                    .backs
+                      .backs-flex
+                        img.sd(src="img/facebook.svg")
+                        img.sd(src="img/twitter.svg")
+                        img.sd(src="img/google.svg")
+                        img.sd(src="img/linkedin.svg")
+                  p.name Md. Khalil Uddin
+                  p.who Head of Ideas
+                .card2.align-items.nb
+                  .photo-wrap
+                    img.bro-margin(src="img/miah.png")
+                    .backs
+                      .backs-flex
+                        img.sd(src="img/facebook.svg")
+                        img.sd(src="img/twitter.svg")
+                        img.sd(src="img/google.svg")
+                        img.sd(src="img/linkedin.svg")
+                  p.name Rubel Miah
+                  p.who Lead WordPress Developer
+                .card3.align-items.nb
+                  .photo-wrap
+                    img.bro-margin(src="img/mia.png")
+                    .backs
+                      .backs-flex
+                        img.sd(src="img/facebook.svg")
+                        img.sd(src="img/twitter.svg")
+                        img.sd(src="img/google.svg")
+                        img.sd(src="img/linkedin.svg")
+                  p.name Shamim Mia
+                  p.who Sr. Web Developer
+                .card4.align-items.nb
+                  .photo-wrap
+                    img.bro-margin(src="img/doe.png")
+                    .backs
+                      .backs-flex
+                        img.sd(src="img/facebook.svg")
+                        img.sd(src="img/twitter.svg")
+                        img.sd(src="img/google.svg")
+                        img.sd(src="img/linkedin.svg")
+                  p.name John Doe
+                  p.who Front-end Developer
+                .card5.align-items.nb
+                  .photo-wrap
+                    img.bro-margin(src="img/cat.jpg")
+                    .backs
+                      .backs-flex
+                        img.sd(src="img/facebook.svg")
+                        img.sd(src="img/twitter.svg")
+                        img.sd(src="img/google.svg")
+                        img.sd(src="img/linkedin.svg")
+                  p.name Artem
+                  p.who The Best
       .latestworks(id="three").wrapper.chik
         h2.h2-txt Latest Works
         hr.hr-underh2
@@ -150,7 +190,7 @@ html(lang="en")
               p.name-item Hair Dresser
               p.name-categ Branding
               label.sdsx
-                a View
+                a(href="#").kid View
                 svg.sdc(version='1.2' xmlns='http://www.w3.org/2000/svg' viewbox='0 0 6 10' width='6' height='10')
                   style.
                     .a{fill:#c0301c}
@@ -161,7 +201,7 @@ html(lang="en")
               p.name-item Paper Bird
               p.name-categ Design
               label.sdsx
-                a View
+                a(href="#").kid View
                 svg.sdc(version='1.2' xmlns='http://www.w3.org/2000/svg' viewbox='0 0 6 10' width='6' height='10')
                   style.
                     .a{fill:#c0301c}
@@ -172,7 +212,7 @@ html(lang="en")
               p.name-item Workspace
               p.name-categ Branding, Design
               label.sdsx
-                a View
+                a(href="#").kid View
                 svg.sdc(version='1.2' xmlns='http://www.w3.org/2000/svg' viewbox='0 0 6 10' width='6' height='10')
                   style.
                     .a{fill:#c0301c}
@@ -183,7 +223,7 @@ html(lang="en")
               p.name-item Camera
               p.name-categ Development, Strategy
               label.sdsx
-                a View
+                a(href="#").kid View
                 svg.sdc(version='1.2' xmlns='http://www.w3.org/2000/svg' viewbox='0 0 6 10' width='6' height='10')
                   style.
                     .a{fill:#c0301c}
@@ -194,7 +234,7 @@ html(lang="en")
               p.name-item Bike
               p.name-categ Development
               label.sdsx
-                a View
+                a(href="#").kid View
                 svg.sdc(version='1.2' xmlns='http://www.w3.org/2000/svg' viewbox='0 0 6 10' width='6' height='10')
                   style.
                     .a{fill:#c0301c}
@@ -205,7 +245,7 @@ html(lang="en")
               p.name-item Note
               p.name-categ Development
               label.sdsx
-                a View
+                a(href="#").kid View
                 svg.sdc(version='1.2' xmlns='http://www.w3.org/2000/svg' viewbox='0 0 6 10' width='6' height='10')
                   style.
                     .a{fill:#c0301c}
@@ -216,7 +256,7 @@ html(lang="en")
               p.name-item Table With Laptop
               p.name-categ Branding
               label.sdsx
-                a View
+                a(href="#").kid View
                 svg.sdc(version='1.2' xmlns='http://www.w3.org/2000/svg' viewbox='0 0 6 10' width='6' height='10')
                   style.
                     .a{fill:#c0301c}
@@ -227,7 +267,7 @@ html(lang="en")
               p.name-item Papers And Instruments
               p.name-categ Strategy, Design
               label.sdsx
-                a View
+                a(href="#").kid View
                 svg.sdc(version='1.2' xmlns='http://www.w3.org/2000/svg' viewbox='0 0 6 10' width='6' height='10')
                   style.
                     .a{fill:#c0301c}
@@ -238,7 +278,7 @@ html(lang="en")
               p.name-item Anything, maybe card
               p.name-categ Branding
               label.sdsx
-                a View
+                a(href="#").kid View
                 svg.sdc(version='1.2' xmlns='http://www.w3.org/2000/svg' viewbox='0 0 6 10' width='6' height='10')
                   style.
                     .a{fill:#c0301c}
@@ -293,18 +333,21 @@ html(lang="en")
 
               a(href="#").readmore read more 
       .slider-logos(id="five").chik.column.align-items
-        .slider-logs.align-items.mcs
-          img(src="img/deorham.png", alt="deorham")
-          img(src="img/ratings.png", alt="ratings")
-          img(src="img/malikmedia.png", alt="malikmedia")
-          img(src="img/bcause.png", alt="bcause")
-          img(src="img/wompeby.png", alt="wompeby")
+        .full-card
+          .slider-logs.align-items
+            img(src="img/deorham.png", alt="deorham")
+            img(src="img/ratings.png", alt="ratings")
+            img(src="img/malikmedia.png", alt="malikmedia")
+            img(src="img/bcause.png", alt="bcause")
+            img(src="img/wompeby.png", alt="wompeby")
         p.txt-log Hvaing placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum”
         p.txt-logs John Doe, Google Inc.
         .s
-          a(href="#" id="s1").s1 
-          a(href="#" id="s2").s2 
-          a(href="#" id="s3").s3 
+          a(href="#" data-index="0").s1.dot.active
+          a(href="#" data-index="1").s2.dot
+          a(href="#" data-index="2").s3.dot
+          a(href="#" data-index="3").s4.dot
+          a(href="#" data-index="4").s5.dot
       .getintouch(id="six").wrapper
         .column.align-items
           h2.h2-txt.chik Get in touch
@@ -334,27 +377,27 @@ html(lang="en")
                 p.jeker shapedtheme@gmail.com
                 p.jeker khalilkode@gmail.com
           .form
-            form(action="#" method="post")
+            form(action="php/index.php" method="post")
               .jokers
                 p
                   label
-                    input.class(type="text" name="userName" placeholder="Your Name" required)
+                    input.class(type="text" id="userName" name="name" placeholder="Your Name" required)
                 p
                   label
-                    input.class(type="email" name="userMail" placeholder="Your E-mail" required)
+                    input.class(type="email" id="userMail" name="mail" placeholder="Your E-mail" required)
               .jokers
                 p
                   label
-                    input.class(type="text" name="userSubject" placeholder="Your subject" required)
+                    input.class(type="text" id="userSubject" name="subj" placeholder="Your subject" required)
                 p
                   label
-                    input.class(type="text" name="companyName" placeholder="Company name" required)
+                    input.class(type="text" id="companyName" name="compName" placeholder="Company name" required)
               p.chks
                 label
-                  textarea.class(name="userMessage" placeholder="Write Your Message" required)
+                  textarea.class(id="userMessage" name="message" placeholder="Write Your Message")
               p.sc
                 label
-                  button.vasya(type="submit") Send message
+                  button.vasya(type="button") Send message
                 label
                   span.sw * 
                   span We’ll contact you as as possible. We don’t reply on Monday.

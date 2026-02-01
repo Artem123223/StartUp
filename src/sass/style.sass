@@ -54,6 +54,9 @@ html
 html, body
   overflow-x: hidden
 
+body 
+  font-family: 'Montserrat', sans-serif
+
 img
   max-width: 100%
   height: auto
@@ -248,8 +251,10 @@ main
 
 .thre-serv
   +media(320)
+    flex-direction: column
     gap: 15px
   +media(768)
+    flex-direction: row
     gap: 45px
 
 .fi-h-txt
@@ -273,10 +278,6 @@ main
   font-weight: 400
   font-family: "Roboto Slab"
   text-align: center
-  +media(320)
-    height: 312px
-  +media(768)
-    height: auto
 
 .ocin-serv,
 .icon-serv
@@ -318,6 +319,10 @@ main
 .txt-about
   gap: 32px
   margin-bottom: 70px
+  +media(320)
+    flex-direction: column
+  +media(768)
+    flex-direction: row
 
 .txt-aboutus
   font-size: 14px
@@ -335,11 +340,13 @@ main
   gap: 29px
   position: relative
   width: 100%
-  overflow: hidden
   height: auto
   display: flex
   transform: translate(0, 0)
   transition: all 0.2s ease
+
+.full-card
+  overflow: hidden
 
 .card1,
 .card2, 
@@ -350,7 +357,13 @@ main
   height: auto
   +media(320)
     min-width: 135px
+  +media(375)
+    min-width: 165px
+  +media(425)
+    min-width: 190px
   +media(768)
+    min-width: 230px
+  +media(1140)
     min-width: 263px
 
 .bro-margin
@@ -380,6 +393,54 @@ main
   opacity: 0
   transition: opacity 0.3s ease
 
+.jegernout
+  display: flex
+  gap: 20px
+
+.popap
+  min-width: 250px
+  width: 50vw
+  height: 60vh
+  background-color: #fff
+  border: 4px solid #dadada
+  padding: 15px
+  z-index: 3
+  position: fixed
+  overflow-y: auto
+  left: 50%
+  top: 50%
+  transform: translate(-50%, -50%)
+  display: none
+ 
+.h3,
+.cance,
+.infs p
+  font-family: "Myriad Pro"
+  color: #555
+  font-size: 25px
+  text-decoration: none
+
+.xc
+  width: 100%
+  border: none
+  border-top: 2px solid #dadada
+  margin: 15px 0
+
+.inBlocks
+  display: flex
+  flex-direction: column
+  gap: 10px
+  
+.but 
+  appearance: none
+  padding: 5px 15px
+  transition: 0.2s ease
+  background-color: #fff
+  border: none
+  cursor: pointer
+  &:hover
+    background-color: #dadada
+
 .photo-wrap:hover .backs
   opacity: 1
 
@@ -395,6 +456,20 @@ main
   &:hover
     background-color: #c0301c
 
+.casa
+  position: absolute
+  right: 50px
+  +media(320)
+    right: 80px
+  +media(768)
+    right: 580px
+  +media(1140)
+    right: 600px
+  +media(1200)
+    right: 650px
+  +media(1300)
+    right: 50px
+
 .name
   font-size: 14px
   text-transform: uppercase
@@ -407,6 +482,10 @@ main
   color: #555
   font-weight: 400
   font-family: "Roboto Slab"
+  +media(320)
+    min-height: 36px
+  +media(768)
+    min-height: auto
 
 .left_button,
 .right_button
@@ -419,6 +498,25 @@ main
   &:hover
     background-color: #c0301c
 
+.blick
+  display: flex !important
+  flex-direction: column
+  justify-content: space-between
+
+.pidt
+  padding: 15px 10px
+  border-radius: 10px
+  background-color: #00ff1a
+  appearance: none
+  border: 1px solid #00ff1a
+  cursor: pointer
+  color: #fff
+  font-family: "Montserrat"
+  font-weight: 600
+  transition: 0.2s ease
+  &:hover
+    background-color: #fff
+    color: #00ff1a
 
 .left_button
   position: absolute
@@ -514,20 +612,28 @@ main
 
 .sdsx
   padding: 5px 20px
+  cursor: pointer
+  border: 2px solid #fff
+  transition: 0.2s ease
+  display: flex
+  gap: 10px
+  align-items: center
+  &:hover
+    background-color: #fff
+    .kid
+      color: #c0301c
+
+.kid
   font-size: 14px
   letter-spacing: 1px
   line-height: 24px
   text-transform: uppercase
+  text-decoration: none
   color: #fff
   font-weight: 400
   font-family: "Roboto Slab"
   text-align: center
-  cursor: pointer
-  border: 2px solid #fff
-  transition: 0.2s ease
-  &:hover
-    color: #c0301c
-    background-color: #fff
+  transition: 0.2s ease 
 
 .sdc path
   fill: #fff
@@ -663,8 +769,15 @@ main
   +media(320)
     box-sizing: border-box
 
-.hidden-txt 
-  display: none
+.hidden-txt
+  max-height: 0
+  opacity: 0
+  overflow: hidden
+  transition: max-height 0.3s ease-out, opacity 0.3s ease-out
+
+.block
+  max-height: 1000px
+  opacity: 1
 
 h4
   font-size: 16px
@@ -724,15 +837,19 @@ h4
 .nored
   color: #555
 
-.block
-  display: block
-
 .slider-logos
   background-color: #f8f8f8
 
 .slider-logs
   gap: 60px
   margin-bottom: 70px
+  +media(320)
+    gap: 20px
+  +media(768)
+    gap: 60px
+
+.slider-logs img
+  min-width: 142px
 
 .txt-log
   max-width: 790px
@@ -753,7 +870,7 @@ h4
   text-align: center
   margin-bottom: 40px
   
-.s1, .s2, .s3
+.s1, .s2, .s3, .s4, .s5
   width: 13px
   height: 13px
   border-radius: 6px
@@ -992,11 +1109,6 @@ footer
     right: 10px
   +media(768)
     right: -200%
-
-.mcs
-  display: block
-  +media(768)
-    display: flex
   
 .home
   position: absolute
@@ -1043,3 +1155,72 @@ footer
   +media(768)
     flex-direction: row
     gap: 0
+
+.inx 
+  margin-left: 10px
+  display: flex
+  flex-direction: column
+  gap: 15px
+
+.confirmBlock
+  display: none
+  width: 50vw
+  height: 50vh
+  background-color: #fff
+  border: 2px solid #dadada
+  position: fixed
+  z-index: 10
+  top: 50%
+  left: 50%
+  transform: translate(-50%, -50%)
+  padding: 10px
+  h2
+    text-align: center
+
+.xr
+  width: 100%
+  border: none
+  border-top: 2px solid #dadada
+  margin: 10px 0 15px
+
+.cool
+  padding: 10px 15px
+  appearance: none
+  background-color: #00bc13
+  border: 2px solid #00bc13
+  color: #fff
+  font-weight: 600
+  font-family: "Montserrat"
+  transition: 0.2s ease
+  &:hover
+    background-color: #fff
+    color: #00bc13
+
+.bad
+  padding: 10px 15px
+  appearance: none
+  background-color: #ff0000
+  border: 2px solid #ff0000
+  color: #fff
+  font-weight: 600
+  font-family: "Montserrat"
+  transition: 0.2s ease
+  &:hover
+    background-color: #7e0000
+    border-color: #7e0000
+
+.buttonsFor
+  display: flex
+  align-items: center
+  gap: 10px
+  button
+    width: 100%
+    cursor: pointer
+
+.infs
+  display: flex
+  flex-direction: column
+  align-items: center
+  p 
+    font-weight: 600
+    font-family: "Roboto Slab"

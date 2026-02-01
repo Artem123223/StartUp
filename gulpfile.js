@@ -1,96 +1,144 @@
-import browserSync from "browser-sync";
-import gulp from "gulp";
-import { deleteAsync } from "del";
-import pug from "gulp-pug";
-import * as coreSass from "sass";
-import gulpSass from "gulp-sass";
-import autoprefixer from "gulp-autoprefixer";
-import concat from "gulp-concat";
-import uglify from "gulp-uglify-es";
-import imagemin from "gulp-imagemin";
-import cache from "gulp-cache";
-import gcmq from "gulp-group-css-media-queries";
-import cleanCSS from "gulp-clean-css";
+import browserSync from "browser-sync"
+import gulp from "gulp"
+import { deleteAsync } from "del"
+import pug from "gulp-pug"
+import * as coreSass from "sass"
+import gulpSass from "gulp-sass"
+import autoprefixer from "gulp-autoprefixer"
+import concat from "gulp-concat"
+import uglify from "gulp-uglify-es"
+import imagemin from "gulp-imagemin" // Якщо виникає помилка з require, можливо, треба оновити цей пакет або імпорт
+import cache from "gulp-cache"
+import gcmq from "gulp-group-css-media-queries"
+import cleanCSS from "gulp-clean-css"
+import connect from "gulp-connect-php"
 
-const sass = gulpSass(coreSass);
-const server = browserSync.create();
+const sass = gulpSass(coreSass)
 
-export const browserSyncFunc = (done) => {
-    server.init({
-        server: {
-            baseDir: "docs"
-        },
-        open: true,
-        browser: "chrome"
-    });
-    done();
+export const browserSyncFunc = () => {
+    connect.server({
+        base: "docs",
+        port: 8000,
+        keepalive: true,
+        bin: "C:/xampp/php/php.exe", 
+    }, function() {
+        browserSync({
+            proxy: "127.0.0.1:8000",
+            notify: false
+        })
+    })
 }
 
 export const html = () => {
-    return gulp.src("src/pug/*.pug")
-        .pipe(pug({ pretty: true }))
-        .pipe(gulp.dest("docs"))
-        .pipe(server.stream());
+    return gulp
+    .src([
+        "src/pug/*.pug"
+    ])
+    .pipe(pug())
+    .pipe(gulp.dest("docs"))
+    .pipe(browserSync.reload({
+        stream: true
+    }))
+}
+
+export const phpFiles = () => {
+    return gulp
+    .src("src/php/**/*.php")
+    .pipe(gulp.dest("docs/php/"))
+    .pipe(browserSync.reload({
+        stream: true
+    }))
 }
 
 export const css = () => {
-    return gulp.src(["src/sass/*.css", "src/sass/*.sass", "src/sass/*.scss"])
-        .pipe(sass({ outputStyle: "compressed" }).on("error", sass.logError))
-        .pipe(autoprefixer({ overrideBrowserslist: ["last 15 versions"], cascade: true }))
-        .pipe(gcmq())
-        .pipe(concat("style.css"))
-        .pipe(cleanCSS({ compatibility: "ie8" }))
-        .pipe(gulp.dest("docs/css"))
-        .pipe(server.stream());
+    return gulp
+    .src([
+        "src/sass/*.css",
+        "src/sass/*.sass"
+    ])
+    .pipe(sass({
+        outputStyle: "compressed"
+    }).on("error", sass.logError))
+    .pipe(autoprefixer({
+        overrideBrowserslist: ["last 15 versions"],
+        cascade: true
+    }))
+    .pipe(gcmq("style.css"))
+    .pipe(concat("style.css"))
+    .pipe(cleanCSS({
+        compatibility: "ie8"
+    }))
+    .pipe(gulp.dest("docs/css"))
+    .pipe(browserSync.reload({
+        stream: true
+    }))
 }
 
 export const js = () => {
-    return gulp.src("src/js/**/*.js")
-        .pipe(uglify.default())
-        .pipe(concat("scripts.js"))
-        .pipe(gulp.dest("docs/js"))
-        .on('end', server.reload);
+    return gulp 
+    .src([
+        "src/js/**/*.js"
+    ])
+    .pipe(uglify.default())
+    .pipe(concat("scripts.js"))
+    .pipe(gulp.dest("docs/js"))
+    .pipe(browserSync.reload({
+        stream: true
+    }))
 }
 
 export const files = () => {
-    return gulp.src("src/*.*", { dot: true })
-        .pipe(gulp.dest("docs"))
-        .pipe(server.stream());
+    return gulp 
+    .src([
+        "src/*.*"
+    ], {dot: true})
+    .pipe(gulp.dest("docs"))
+    .pipe(browserSync.reload({
+        stream: true
+    }))
 }
 
 export const fonts = () => {
-    return gulp.src("src/fonts/**/*.*", { encoding: false })
-        .pipe(gulp.dest("docs/fonts"))
-        .pipe(server.stream());
+    return gulp 
+    .src("src/fonts/**/*.*", { encoding: false })
+    .pipe(gulp.dest("docs/fonts"))
+    .pipe(browserSync.reload({
+        stream: true
+    }))
 }
 
 export const images = () => {
-    return gulp.src("src/img/**/*", { encoding: false })
-        .pipe(gulp.dest("docs/img"))
-        .pipe(server.stream());
+    return gulp 
+    .src("src/img/**/*", { encoding: false })
+    .pipe(gulp.dest("docs/img"))
+    .pipe(browserSync.reload({
+        stream: true
+    }))
 }
 
+export const clear = () => {
+    return cache.clearAll()
+} 
+
 export const delDocs = () => {
-    return deleteAsync(["docs"]);
+    return deleteAsync("docs")
 }
 
 export const watch = () => {
-    gulp.watch("src/sass/**/*.{sass,scss,css}", css);
-    gulp.watch("src/js/**/*.js", js);
-    gulp.watch("src/pug/**/*.pug", html);
-    gulp.watch("src/*.*", files);
-    gulp.watch("src/fonts/**/*.*", fonts);
-    gulp.watch("src/img/**/*.*", images);
+    gulp.watch("src/sass/**/*.sass", gulp.parallel(css))
+    gulp.watch("src/js/**/*.js", gulp.parallel(js))
+    gulp.watch("src/pug/**/*.pug", gulp.parallel(html))
+    gulp.watch("src/php/**/*.php", gulp.parallel(phpFiles)) 
+    gulp.watch("src/*.*", gulp.parallel(files))
+    gulp.watch("src/fonts/**/*.*", gulp.parallel(fonts))
+    gulp.watch("src/img/**/*.*", gulp.parallel(images))
 }
 
 const build = gulp.series(
-    delDocs, 
-    gulp.parallel(html, css, js, files, fonts, images)
-);
+    delDocs,
+    gulp.parallel(html, css, js, phpFiles, files, fonts, images)
+)
 
-const dev = gulp.series(
-    build,
-    gulp.parallel(browserSyncFunc, watch)
-);
+const watchGroup = gulp.parallel(watch, browserSyncFunc)
 
-export default dev;
+export default gulp.series(build, watchGroup)
