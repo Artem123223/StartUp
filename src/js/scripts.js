@@ -88,26 +88,37 @@ document.addEventListener("DOMContentLoaded", function() {
     div.classList.remove("blick")
   })
 
+  const savedCategory = localStorage.getItem("selectedCategory") || "all";
+
+  const applyFilter = (filterValue) => {
+    items.forEach(item => {
+      const itemCategory = item.getAttribute("data-category");
+      if (filterValue === "all" || itemCategory.includes(filterValue)) {
+        item.style.display = "block";
+      } else {
+        item.style.display = "none";
+      }
+    });
+
+    categ.forEach(b => {
+      b.classList.remove("toggle");
+      if (b.id === filterValue) {
+        b.classList.add("toggle");
+      }
+    });
+  };
+
+  applyFilter(savedCategory);
+
   categ.forEach(btn => {
     btn.addEventListener("click", (e) => {
-      e.preventDefault()
-
-      categ.forEach(b => b.classList.remove("toggle"))
-      btn.classList.toggle("toggle")
+      e.preventDefault();
+      const filterValue = btn.id;
       
-      const filterValue = btn.id
-
-      items.forEach(item => {
-        const itemCategory = item.getAttribute("data-category")
-
-        if (filterValue === "all" || itemCategory.includes(filterValue)) {
-          item.style.display = "block"
-        } else {
-          item.style.display = "none"
-        }
-      })
-    })
-  })
+      localStorage.setItem("selectedCategory", filterValue);
+      applyFilter(filterValue);
+    });
+  });
 
   window.addEventListener("scroll", () => {
     if(window.scrollY > 0) {
@@ -602,8 +613,11 @@ document.addEventListener("DOMContentLoaded", function() {
     }
     
     let info = JSON.parse(localStorage.getItem("info")) || []
-    info.push(information)
-    localStorage.setItem("info", JSON.stringify(info))
+    if(info) {
+      info = []
+      info.push(information)
+      localStorage.setItem("info", JSON.stringify(info))
+    }
     
     confirm.style.display = "none"
     alert("Ur information added to localStorage")
