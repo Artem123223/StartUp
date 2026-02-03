@@ -290,7 +290,9 @@ document.addEventListener("DOMContentLoaded", function() {
   const letsslider = () => {
     const card = parent.firstElementChild
     if (!card) return 0
-    return card.getBoundingClientRect().width + 60
+    const style = window.getComputedStyle(parent)
+    const gap = parseFloat(style.gap) || parseFloat(style.columnGap) || 0
+    return card.getBoundingClientRect().width + gap
   }
 
   const dots = document.querySelectorAll(".dot")
@@ -300,7 +302,7 @@ document.addEventListener("DOMContentLoaded", function() {
     currentIndex = (currentIndex + 1) % texts.length
     txt.textContent = texts[currentIndex]
     dots.forEach(btn => btn.classList.remove("backred"))
-    dots[currentIndex].classList.add("backred")
+    if(dots[currentIndex]) dots[currentIndex].classList.add("backred")
   }
 
   dots.forEach((btn, index) => btn.addEventListener("click", (e) => {
@@ -311,6 +313,9 @@ document.addEventListener("DOMContentLoaded", function() {
     btn.classList.add("backred")
     txt.textContent = texts[index]
     currentIndex = index
+    
+    stopSlider()
+    startSlider()
   }))
 
   const nextSlide = () => {
@@ -322,8 +327,11 @@ document.addEventListener("DOMContentLoaded", function() {
     const resetPosition = () => {
       parent.removeEventListener("transitionend", resetPosition)
       parent.style.transition = "none"
-      parent.style.transform = "translateX(0)"
+      
       parent.appendChild(parent.firstElementChild)
+      
+      parent.style.transform = "translateX(0)"
+      
       updateText()
     }
 
@@ -331,6 +339,7 @@ document.addEventListener("DOMContentLoaded", function() {
   }
 
   const startSlider = () => {
+    if (interval) clearInterval(interval)
     interval = setInterval(nextSlide, 2000)
   }
 
@@ -340,6 +349,11 @@ document.addEventListener("DOMContentLoaded", function() {
 
   parent.addEventListener("mouseenter", stopSlider)
   parent.addEventListener("mouseleave", startSlider)
+  
+  window.addEventListener("resize", () => {
+      parent.style.transition = "none"
+      parent.style.transform = "translateX(0)"
+  })
 
   txt.textContent = texts[0]
   startSlider()
@@ -374,7 +388,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     img.src = product.img
     x.classList.add("align-items")
-    img.style.width = "150px"
+    img.classList.add("schoolboy")
     p.classList.add("cance")
     p.innerHTML = product.title
     inX.appendChild(p3)

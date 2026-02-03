@@ -407,10 +407,17 @@ main
   z-index: 3
   position: fixed
   overflow-y: auto
+  overflow-x: hidden
   left: 50%
   top: 50%
   transform: translate(-50%, -50%)
   display: none
+
+.schoolboy
+  +media(320)
+    width: 100px
+  +media(425)
+    width: 150px
  
 .h3,
 .cance,
@@ -845,11 +852,19 @@ h4
   margin-bottom: 70px
   +media(320)
     gap: 20px
+    margin-bottom: 30px
   +media(768)
     gap: 60px
+    margin-bottom: 70px
 
 .slider-logs img
   min-width: 142px
+  +media(320)
+    min-width:  auto
+    max-width: 90px
+  +media(768)
+    min-width: 142px
+    max-width: auto
 
 .txt-log
   max-width: 790px
