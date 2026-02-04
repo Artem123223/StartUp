@@ -1,15 +1,15 @@
 document.addEventListener("DOMContentLoaded", function() {
-    const dark = document.querySelector(".dark-bgc"),
-        burger = document.querySelector(".burger"),
-        home = document.querySelector(".home"),
-        cancel = document.querySelector(".cancel")
+  const dark = document.querySelector(".dark-bgc"),
+      burger = document.querySelector(".burger"),
+      home = document.querySelector(".home"),
+      cancel = document.querySelector(".cancel")
 
   burger.addEventListener("click", function() {
-      home.style.right = "0";
+      home.style.right = "0"
       dark.style.display = "block"
   })
   function cancelBurger() {
-      home.style.right = "-200%";
+      home.style.right = "-200%"
       dark.style.display = "none"
   }
   cancel.addEventListener("click", cancelBurger)
@@ -19,16 +19,24 @@ document.addEventListener("DOMContentLoaded", function() {
 
   function updateSum() {
     let suma = 0
+    let fullCount = 0
     let carj = JSON.parse(localStorage.getItem("carj")) || []
 
     carj.forEach(item => {
         let price = parseInt(item.price)
         let count = item.count || 1
+        
         suma += price * count
+        fullCount += count
     })
 
     if (txtsuma) {
         txtsuma.textContent = `Sum: ${suma}$`
+    }
+
+    const cartIcon = document.querySelector(".casa")
+    if (cartIcon) {
+        cartIcon.setAttribute('data-count', fullCount)
     }
   }
 
@@ -60,7 +68,7 @@ document.addEventListener("DOMContentLoaded", function() {
       document.querySelector("#four"),
       document.querySelector("#five"),
       document.querySelector("#six")
-  ];
+  ]
 
   all.classList.add("toggle")
 
@@ -70,8 +78,24 @@ document.addEventListener("DOMContentLoaded", function() {
     })
   }
 
-  sdsx(getstart)
   sdsx(sdx)
+
+  const signin = document.querySelector(".signin")
+  const cancels = signin.querySelector(".cance")
+
+  getstart.addEventListener("click", (e) => {
+    e.preventDefault()
+    signin.style.display = "flex"
+    signin.style.flexDirection = "column"
+    signin.style.justifyContent = "space-between"
+    div.style.display = "none"
+    confirm.style.display = "none"
+  })
+
+  cancels.addEventListener("click", (e) => {
+    e.preventDefault()
+    signin.style.display = "none"
+  })
 
   dolike.addEventListener("click", (e) => {
     e.preventDefault()
@@ -88,37 +112,37 @@ document.addEventListener("DOMContentLoaded", function() {
     div.classList.remove("blick")
   })
 
-  const savedCategory = localStorage.getItem("selectedCategory") || "all";
+  const savedCategory = localStorage.getItem("selectedCategory") || "all"
 
   const applyFilter = (filterValue) => {
     items.forEach(item => {
-      const itemCategory = item.getAttribute("data-category");
+      const itemCategory = item.getAttribute("data-category")
       if (filterValue === "all" || itemCategory.includes(filterValue)) {
-        item.style.display = "block";
+        item.style.display = "block"
       } else {
-        item.style.display = "none";
+        item.style.display = "none"
       }
-    });
+    })
 
     categ.forEach(b => {
-      b.classList.remove("toggle");
+      b.classList.remove("toggle")
       if (b.id === filterValue) {
-        b.classList.add("toggle");
+        b.classList.add("toggle")
       }
-    });
-  };
+    })
+  }
 
-  applyFilter(savedCategory);
+  applyFilter(savedCategory)
 
   categ.forEach(btn => {
     btn.addEventListener("click", (e) => {
-      e.preventDefault();
-      const filterValue = btn.id;
+      e.preventDefault()
+      const filterValue = btn.id
       
-      localStorage.setItem("selectedCategory", filterValue);
-      applyFilter(filterValue);
-    });
-  });
+      localStorage.setItem("selectedCategory", filterValue)
+      applyFilter(filterValue)
+    })
+  })
 
   window.addEventListener("scroll", () => {
     if(window.scrollY > 0) {
@@ -126,27 +150,27 @@ document.addEventListener("DOMContentLoaded", function() {
     } else {
       menu.classList.remove("active")
     }
-  });
+  })
 
-  let clicks = 0;
-  let timer = null;
+  let clicks = 0
+  let timer = null
 
   clickOn = function(e) {
     e.preventDefault()
   }
 
   icon.addEventListener("click", () => {
-    clicks++;
+    clicks++
 
     if (clicks === 1) {
       timer = setTimeout(() => {
-        clicks = 0;
-      }, 500);
+        clicks = 0
+      }, 500)
     }
 
     if (clicks === 3) {
-      clearTimeout(timer);
-      clicks = 0;
+      clearTimeout(timer)
+      clicks = 0
 
       iconstart.textContent = "Hack"
       iconmiddle.textContent = "This"
@@ -167,7 +191,7 @@ document.addEventListener("DOMContentLoaded", function() {
     } else {
         btn.textContent = "read more"
     }
-  }));
+  }))
 
   let joker = new Date()
   let days = joker.getDate(),
@@ -217,6 +241,8 @@ document.addEventListener("DOMContentLoaded", function() {
 
     const takeblock = blocks[index]
     const position = takeblock.offsetTop
+    
+    cancelBurger()
 
     const interval = setTimeout(() => {
       window.scrollTo({
@@ -366,12 +392,13 @@ document.addEventListener("DOMContentLoaded", function() {
     e.preventDefault()
     div.classList.toggle("blick")
     confirm.style.display = "none"
+    signin.style.display = "none"
   })
 
   const view = document.querySelectorAll(".sdsx")
 
   function newCard(product) {
-    let basePrice = parseInt(product.price);
+    let basePrice = parseInt(product.price)
     let count = product.count || 1
 
     let x = document.createElement("div"),
@@ -595,7 +622,8 @@ document.addEventListener("DOMContentLoaded", function() {
       confirm.style.display = "flex"
       confirm.style.flexDirection = "column"
       confirm.style.justifyContent = "space-between"
-      div.style.display = "none"
+      div.classList.remove("blick")
+      signin.style.display = "none"
 
       const masBut = [name.value, email.value, subj.value, compName.value, userMessage.value]
 
@@ -645,7 +673,127 @@ document.addEventListener("DOMContentLoaded", function() {
     .then(response => response.text())
     .catch(error => {
         console.error("Error:", error)
-        alert("Помилка JS: " + error)
-    });
+        alert("JS error: " + error)
+    })
+  })
+
+  const confirmBtn = document.querySelector(".pidt")
+
+  if (confirmBtn) {
+    confirmBtn.addEventListener("click", (e) => {
+      e.preventDefault()
+
+      const cartData = JSON.parse(localStorage.getItem("carj")) || []
+
+      if (cartData.length === 0) {
+        alert("Cart is empty!")
+        return
+      }
+
+      fetch('php/send.php', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(cartData)
+      })
+      .then(response => response.json())
+      .then(data => {
+        if (data.status === "success") {
+          alert("Order successfully sent!")
+          
+          localStorage.removeItem("carj")
+          
+          const inBlocks = document.querySelector(".inBlocks")
+          if(inBlocks) inBlocks.innerHTML = ""
+          
+          if(typeof updateSum === 'function') {
+            updateSum()
+          }
+
+          const popup = document.querySelector(".popap")
+          if(popup) popup.classList.remove("blick")
+
+        } else {
+          console.log(data)
+          alert("Sending error")
+        }
+      })
+      .catch(error => {
+        console.error("Error:", error)
+        alert("Server connection error")
+      })
+    })
+  }
+  const drag = document.querySelectorAll(".blocks p")
+  const dropZones = document.querySelectorAll(".fullBlocks div")
+  const submit = document.querySelector(".axc")
+  let draggedItem = null
+
+  drag.forEach(item => {
+    item.addEventListener("dragstart", function() {
+      draggedItem = item
+      setTimeout(() => {
+        item.classList.add("hid")
+      }, 0)
+    })
+    item.addEventListener("dragend", function() {
+      setTimeout(() => {
+        item.classList.remove("hid")
+        draggedItem = null
+      }, 0)
+    })
+  })
+
+  dropZones.forEach(zone => {
+    zone.addEventListener("dragover", (e) => {
+      e.preventDefault()
+    })
+    zone.addEventListener("drop", (e) => {
+      e.preventDefault()
+      if (zone.children.length >= 4) {
+        alert("Max 4 digits!")
+        return
+      }
+      if (draggedItem) {
+        zone.appendChild(draggedItem)
+        draggedItem.style.cursor = "pointer"
+        draggedItem.onclick = function() {
+          this.remove()
+        }
+      }
+    })
+  })
+
+  const h1 = document.querySelector("h1")
+
+  submit.addEventListener("click", (e) => {
+    e.preventDefault()
+    
+    const zone1 = document.querySelector(".fiRst")
+    const zone2 = document.querySelector(".seCond")
+    const zone3 = document.querySelector(".thIrd")
+
+    const getVal = (zone) => {
+      let str = ""
+      for (let child of zone.children) {
+        str += child.textContent.trim()
+      }
+      return str
+    }
+
+    const day = getVal(zone1)
+    const month = getVal(zone2)
+    const year = getVal(zone3)
+
+    console.log(day, month, year)
+
+    if (day === "21" && month === "09" && year === "2012") {
+      alert("Success! 21.09.2012")
+      h1.textContent = "Now, u did it"
+      signin.style.display = "none"
+    } else {
+      alert("Wrong date!")
+    }
   })
 });

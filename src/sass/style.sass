@@ -1,5 +1,5 @@
 @import components/mixin
-  
+
 @font-face
   font-family: 'Myriad Pro'
   src: url('../fonts/MyriadPro-Regular.woff2') format('woff2'), url('../fonts/MyriadPro-Regular.woff') format('woff')
@@ -132,7 +132,7 @@ header
 
 .logo
   font-size: 24px
-  line-height: 36px
+  line-height: calc(36 / 24)
   color: #fff
   font-weight: 600
   font-family: "Montserrat"
@@ -141,7 +141,7 @@ header
 .hometxt
   font-size: 14px
   letter-spacing: 0px
-  line-height: 24px
+  line-height: calc(24 / 14)
   color: #fff
   font-weight: 400
   font-family: "Montserrat"
@@ -173,7 +173,7 @@ h1
   font-size: 48px
   text-transform: uppercase
   color: #fff
-  font-weight: 600
+  font-weight: 100
   font-family: "Montserrat"
   text-align: center
   margin-bottom: 20px
@@ -181,11 +181,11 @@ h1
 .ur
   text-align: center
   font-size: 24px
-  line-height: 24px
+  line-height: 1
   color: #fff
-  font-weight: 400
+  font-weight: 100
   margin-bottom: 50px
-  font-family: "Montserrat"
+  font-family: "Roboto Slab"
 
 .getstart
   padding: 17px 35px
@@ -193,7 +193,7 @@ h1
 
 .getstarted
   font-size: 16px
-  line-height: 24px
+  line-height: calc(24 / 16)
   text-transform: uppercase
   color: #fff
   font-weight: 500
@@ -223,10 +223,10 @@ main
 
 .h2-txt
   font-size: 20px
-  line-height: 24px
+  line-height: calc(24 / 20)
   text-transform: uppercase
   color: #555
-  font-weight: 600
+  font-weight: 100
   font-family: "Montserrat"
   text-align: center
   margin-bottom: 25px
@@ -242,7 +242,7 @@ main
 
 .underh2-txt
   font-size: 16px
-  line-height: 24px
+  line-height: calc(24 / 16)
   color: #555
   font-weight: 400
   font-family: "Roboto Slab"
@@ -273,7 +273,7 @@ main
 
 .fi-txt
   font-size: 14px
-  line-height: 24px
+  line-height: calc(24 / 14)
   color: #555
   font-weight: 400
   font-family: "Roboto Slab"
@@ -326,7 +326,7 @@ main
 
 .txt-aboutus
   font-size: 14px
-  line-height: 24px
+  line-height: calc(24 / 14)
   color: #555
   font-weight: 400
   font-family: "Roboto Slab"
@@ -398,8 +398,6 @@ main
   gap: 20px
 
 .popap
-  min-width: 250px
-  width: 50vw
   height: 60vh
   background-color: #fff
   border: 4px solid #dadada
@@ -412,6 +410,66 @@ main
   top: 50%
   transform: translate(-50%, -50%)
   display: none
+  +media(320)
+    min-width: 90%
+  +media(1140)
+    min-width: 1102px
+
+.signin
+  height: 60vh
+  background-color: #fff
+  border: 4px solid #dadada
+  padding: 15px
+  z-index: 3
+  position: fixed
+  left: 50%
+  top: 50%
+  transform: translate(-50%, -50%)
+  display: none
+  +media(320)
+    min-width: 90%
+  +media(1140)
+    min-width: 1102px
+
+.dragStarting
+  display: flex
+  flex-direction: column
+  gap: 30px
+
+.hid 
+  opacity: 0
+
+.fullBlocks div
+  background-color: #fff
+  border: 2px solid #c0301c
+  width: 200px
+  height: 200px
+  display: flex
+  flex-wrap: wrap
+
+.fullBlocks div p
+  width: 100px
+  height: 100px
+  background-color: #c0301c
+  color: #fff
+  display: flex
+  justify-content: center
+  align-items: center
+  font-size: 40px
+  font-family: "Roboto Slab"
+  margin: 0
+  cursor: pointer
+
+.blocks p
+  font-size: 20px
+  display: inline-flex
+  justify-content: center
+  align-items: center
+  width: 100px
+  height: 100px
+  background-color: #c0301c
+  color: #fff
+  font-family: "Roboto Slab"
 
 .schoolboy
   +media(320)
@@ -466,6 +524,7 @@ main
 .casa
   position: absolute
   right: 50px
+  display: inline-block
   +media(320)
     right: 80px
   +media(768)
@@ -476,6 +535,35 @@ main
     right: 650px
   +media(1300)
     right: 50px
+
+  &[data-count]
+    &:after
+      content: attr(data-count)
+      position: absolute
+      bottom: -5px
+      right: -5px
+      min-width: 18px
+      height: 18px
+      padding: 0 4px
+      border-radius: 10px
+      background-color: #ff4757
+      color: #ffffff
+      font-size: 10px
+      font-weight: bold
+      font-family: sans-serif
+      display: flex
+      align-items: center
+      justify-content: center
+      z-index: 3
+      pointer-events: none
+      border: 2px solid #fff
+
+  &[data-count="0"]
+    &:after
+      display: none
+
+.casa svg
+  display: block
 
 .name
   font-size: 14px
@@ -511,11 +599,10 @@ main
   justify-content: space-between
 
 .pidt
-  padding: 15px 10px
-  border-radius: 10px
-  background-color: #00ff1a
+  padding: 10px 15px
+  background-color: #c0301c
   appearance: none
-  border: 1px solid #00ff1a
+  border: 1px solid #c0301c
   cursor: pointer
   color: #fff
   font-family: "Montserrat"
@@ -523,7 +610,7 @@ main
   transition: 0.2s ease
   &:hover
     background-color: #fff
-    color: #00ff1a
+    color: #c0301c
 
 .left_button
   position: absolute
@@ -578,7 +665,7 @@ main
 
 .name-categ
   font-size: 12px
-  line-height: 24px
+  line-height: calc(24 / 12)
   color: #fff
   font-weight: 400
   font-family: "Roboto Slab"
@@ -617,6 +704,24 @@ main
       min-width: auto
       max-width: none
 
+.axc
+  width: 100%
+  appearance: none
+  border: none
+  background-color: #c0301c
+  padding: 10px 15px
+  border: 2px solid #c0301c
+  color: #fff
+  letter-spacing: 1px
+  font-weight: 600
+  font-size: 18px
+  font-family: "Roboto Slab"
+  cursor: pointer
+  transition: 0.2s ease
+  &:hover
+    background-color: #fff
+    color: #c0301c
+
 .sdsx
   padding: 5px 20px
   cursor: pointer
@@ -633,7 +738,7 @@ main
 .kid
   font-size: 14px
   letter-spacing: 1px
-  line-height: 24px
+  line-height: calc(24 / 14)
   text-transform: uppercase
   text-decoration: none
   color: #fff
@@ -651,7 +756,7 @@ main
 
 .categories a
   font-size: 16px
-  line-height: 24px
+  line-height: calc(24 / 16)
   color: #555
   font-weight: 400
   font-family: "Roboto Slab"
@@ -712,7 +817,7 @@ main
 
 .dolike
   font-size: 30px
-  line-height: 44px
+  line-height: calc(44 / 30)
   color: #fff
   font-weight: 400
   font-family: "Roboto Slab"
@@ -720,7 +825,7 @@ main
 
 .dolike-btn 
   font-size: 18px
-  line-height: 44px
+  line-height: calc(44 / 18)
   text-transform: uppercase
   color: #fff
   font-weight: 400
@@ -741,7 +846,7 @@ main
 
 .just, .red
   font-size: 13px
-  line-height: 24px
+  line-height: calc(24 / 13)
   color: #777
   font-weight: 400
   font-family: "Roboto Slab"
@@ -788,7 +893,7 @@ main
 
 h4
   font-size: 16px
-  line-height: 24px
+  line-height: calc(24 / 16)
   text-transform: uppercase
   color: #c0301c
   font-weight: 600
@@ -812,7 +917,7 @@ h4
 .data p:first-child
   font-size: 24px
   letter-spacing: 2px
-  line-height: 20px
+  line-height: calc(20 / 24)
   margin-bottom: 4px
 
 .data p:last-child
@@ -821,7 +926,7 @@ h4
 
 .txt
   font-size: 14px
-  line-height: 24px
+  line-height: calc(24 / 14)
   color: #555
   font-weight: 400
   font-family: "Roboto Slab" !important
@@ -830,7 +935,7 @@ h4
 .readmore
   font-size: 13px
   letter-spacing: 1px
-  line-height: 24px
+  line-height: calc(24 / 13)
   text-transform: uppercase
   color: #777
   font-weight: 600
@@ -869,7 +974,7 @@ h4
 .txt-log
   max-width: 790px
   font-size: 18px
-  line-height: 30px
+  line-height: calc(30 / 18)
   color: #555
   font-weight: 400
   font-family: "Roboto Slab"
@@ -878,7 +983,7 @@ h4
 
 .txt-logs
   font-size: 21px
-  line-height: 30px
+  line-height: calc(30 / 21)
   color: #555
   font-weight: 400
   font-family: "Roboto Slab"
@@ -925,7 +1030,7 @@ h4
 
 .jeker
   font-size: 12px
-  line-height: 20px
+  line-height: calc(20 / 12)
   color: #555
   font-weight: 400
   font-family: "Roboto Slab"
@@ -947,7 +1052,7 @@ h4
   border: 1px solid #555
   padding: 16px 18px
   font-size: 14px
-  line-height: 20px
+  line-height: calc(20 / 14)
   text-transform: uppercase
   color: #555
   font-weight: 400
@@ -983,7 +1088,7 @@ textarea
   appearance: none
   font-size: 12px
   letter-spacing: 1px
-  line-height: 20px
+  line-height: calc(20 / 12)
   text-transform: uppercase
   color: #555
   font-weight: 400
@@ -1002,14 +1107,14 @@ textarea
 
 .sw
   font-size: 12px
-  line-height: 20px
+  line-height: calc(20 / 12)
   color: #c0301c
   font-weight: 400
   font-family: "Roboto Slab"
 
 .sw ~ span
   font-size: 12px
-  line-height: 20px
+  line-height: calc(20 / 12)
   color: #555
   font-weight: 400
   font-family: "Roboto Slab"
@@ -1035,7 +1140,7 @@ footer
 
 .foot-txt
   font-size: 12px
-  line-height: 20px
+  line-height: calc(20 / 12)
   text-transform: uppercase
   color: #ffffff
   font-weight: 400
