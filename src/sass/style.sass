@@ -416,19 +416,22 @@ main
     min-width: 1102px
 
 .signin
-  height: 60vh
+  height: auto
+  max-height: 90vh
   background-color: #fff
   border: 4px solid #dadada
   padding: 15px
-  z-index: 3
+  z-index: 100
   position: fixed
   left: 50%
   top: 50%
   transform: translate(-50%, -50%)
   display: none
+  overflow-y: auto
   +media(320)
-    min-width: 90%
+    width: 95%
   +media(1140)
+    width: auto
     min-width: 1102px
 
 .dragStarting
@@ -439,6 +442,34 @@ main
 .hid 
   opacity: 0
 
+.blocks
+  display: flex
+  flex-wrap: wrap
+  justify-content: space-between
+  gap: 15px
+  width: 100%
+
+.blocks p
+  width: 100px
+  height: 100px
+  background-color: #c0301c
+  color: #fff
+  display: flex
+  justify-content: center
+  align-items: center
+  font-size: 20px
+  font-family: "Roboto Slab"
+  margin: 0
+  cursor: grab
+  user-select: none
+
+.fullBlocks
+  display: flex
+  flex-wrap: wrap
+  justify-content: space-between
+  gap: 20px
+  width: 100%
+
 .fullBlocks div
   background-color: #fff
   border: 2px solid #c0301c
@@ -446,6 +477,7 @@ main
   height: 200px
   display: flex
   flex-wrap: wrap
+  align-content: flex-start
 
 .fullBlocks div p
   width: 100px
@@ -460,16 +492,37 @@ main
   margin: 0
   cursor: pointer
 
-.blocks p
-  font-size: 20px
-  display: inline-flex
-  justify-content: center
-  align-items: center
-  width: 100px
-  height: 100px
-  background-color: #c0301c
-  color: #fff
-  font-family: "Roboto Slab"
+@media (max-width: 768px)
+  .blocks
+    justify-content: center
+  
+  .fullBlocks
+    justify-content: center
+
+  .blocks p
+    width: 60px
+    height: 60px
+    font-size: 16px
+  
+  .fullBlocks div
+    width: 140px
+    height: 140px
+  
+  .fullBlocks div p
+    font-size: 28px
+
+@media (max-width: 480px)
+  .blocks p
+    width: 45px
+    height: 45px
+    font-size: 14px
+
+  .fullBlocks div
+    width: 80px
+    height: 80px
+
+  .fullBlocks div p
+    font-size: 20px
 
 .schoolboy
   +media(320)
