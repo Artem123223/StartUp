@@ -6,7 +6,8 @@ document.addEventListener("DOMContentLoaded", function() {
         popap = document.querySelector(".popap"),
         conf = document.querySelector(".confirmBlock"),
         casa = document.querySelector(".casa"),
-        confi = document.querySelector(".vasya")
+        confi = document.querySelector(".vasya"),
+        cane = document.querySelector(".ak")
 
   if(popap) dark.style.display = "none"
   if(conf) dark.style.display = "none"
@@ -20,6 +21,13 @@ document.addEventListener("DOMContentLoaded", function() {
   })
   confi.addEventListener("click", function () {
     if(window.innerWidth < 768) dark.style.display = "block"
+  })
+
+  console.log(cane)
+
+  cane.addEventListener("click", (e) => {
+    e.preventDefault()
+    dark.style.display = "none"
   })
   function cancelBurger() {
       home.style.right = "-200%"
