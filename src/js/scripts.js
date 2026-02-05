@@ -40,6 +40,31 @@ document.addEventListener("DOMContentLoaded", function() {
     }
   }
 
+  const smoothScrollTo = (targetPosition, speedFactor = 2) => {
+      const startPosition = window.scrollY
+      const distance = targetPosition - startPosition
+      const duration = Math.abs(distance) / speedFactor;
+      
+      let startTime = null
+
+      function animation(currentTime) {
+          if (startTime === null) startTime = currentTime
+          const timeElapsed = currentTime - startTime
+          
+          let nextPosition = startPosition + (distance * (timeElapsed / duration))
+
+          if (timeElapsed >= duration) nextPosition = targetPosition
+
+          window.scrollTo(0, nextPosition)
+
+          if (timeElapsed < duration) {
+              requestAnimationFrame(animation)
+          }
+      }
+
+      requestAnimationFrame(animation)
+  }
+
   const menu = document.querySelector(".menu"),
         icon = document.querySelector("#b"),
         iconstart = document.querySelector("#icon-1"),
@@ -99,12 +124,9 @@ document.addEventListener("DOMContentLoaded", function() {
 
   dolike.addEventListener("click", (e) => {
     e.preventDefault()
-    let pos = main.lastChild
-    console.log()
-    scrollTo({
-      top: pos.offsetTop,
-      behavior: "smooth"
-    })
+    let pos = main.lastElementChild || main.lastChild 
+    
+    smoothScrollTo(pos.offsetTop, 0.8);
   })
 
   cance.addEventListener("click", (e) => {
@@ -243,14 +265,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const position = takeblock.offsetTop
     
     cancelBurger()
-
-    const interval = setTimeout(() => {
-      window.scrollTo({
-        top: position,
-        behavior: 'smooth'
-      })
-    }, 20)
-
+    smoothScrollTo(position, 0.8); 
   }))
 
   const leftbtn = document.querySelector(".left_button"),
@@ -796,4 +811,38 @@ document.addEventListener("DOMContentLoaded", function() {
       alert("Wrong date!")
     }
   })
+  const animItems = document.querySelectorAll('.anim-items')
+  if (animItems.length > 0) {
+    window.addEventListener('scroll', animOnScroll)
+    
+    function animOnScroll() {
+      for (let index = 0; index < animItems.length; index++) {
+        const item = animItems[index]
+        const itemHeight = item.offsetHeight
+        const itemOffset = offset(item).top
+        const animStart = 4
+
+        let itemPoint = window.innerHeight - itemHeight / animStart
+        
+        if (itemHeight > window.innerHeight) {
+          itemPoint = window.innerHeight - window.innerHeight / animStart
+        }
+
+        if ((window.pageYOffset > itemOffset - itemPoint) && window.pageYOffset < (itemOffset + itemHeight)) {
+          item.classList.add('active')
+        }
+      }
+    }
+    
+    function offset(el) {
+      const rect = el.getBoundingClientRect(),
+        scrollLeft = window.pageXOffset || document.documentElement.scrollLeft,
+        scrollTop = window.pageYOffset || document.documentElement.scrollTop
+      return { top: rect.top + scrollTop, left: rect.left + scrollLeft }
+    }
+
+    setTimeout(() => {
+      animOnScroll()
+    }, 300)
+  }
 });
