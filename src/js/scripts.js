@@ -1,16 +1,34 @@
 document.addEventListener("DOMContentLoaded", function() {
   const dark = document.querySelector(".dark-bgc"),
-      burger = document.querySelector(".burger"),
-      home = document.querySelector(".home"),
-      cancel = document.querySelector(".cancel")
+        burger = document.querySelector(".burger"),
+        home = document.querySelector(".home"),
+        cancel = document.querySelector(".cancel"),
+        popap = document.querySelector(".popap"),
+        conf = document.querySelector(".confirmBlock"),
+        casa = document.querySelector(".casa"),
+        confi = document.querySelector(".vasya")
+
+  if(popap) dark.style.display = "none"
+  if(conf) dark.style.display = "none"
 
   burger.addEventListener("click", function() {
-      home.style.right = "0"
-      dark.style.display = "block"
+    home.style.right = "0"
+    dark.style.display = "block"
+  })
+  casa.addEventListener("click", function () {
+    if(window.innerWidth < 768) dark.style.display = "block"
+  })
+  confi.addEventListener("click", function () {
+    if(window.innerWidth < 768) dark.style.display = "block"
   })
   function cancelBurger() {
       home.style.right = "-200%"
       dark.style.display = "none"
+      if(popap){
+        popap.style.display = "none"
+        popap.classList.remove("blick")
+      }
+      if(conf) conf.style.display = "none"
   }
   cancel.addEventListener("click", cancelBurger)
   dark.addEventListener("click", cancelBurger)
@@ -327,6 +345,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
   let currentIndex = 0
   let interval
+  let isTxtHovered = false
 
   const letsslider = () => {
     const card = parent.firstElementChild
@@ -343,7 +362,7 @@ document.addEventListener("DOMContentLoaded", function() {
     currentIndex = (currentIndex + 1) % texts.length
     txt.textContent = texts[currentIndex]
     dots.forEach(btn => btn.classList.remove("backred"))
-    if(dots[currentIndex]) dots[currentIndex].classList.add("backred")
+    if (dots[currentIndex]) dots[currentIndex].classList.add("backred")
   }
 
   dots.forEach((btn, index) => btn.addEventListener("click", (e) => {
@@ -354,26 +373,28 @@ document.addEventListener("DOMContentLoaded", function() {
     btn.classList.add("backred")
     txt.textContent = texts[index]
     currentIndex = index
-    
+
     stopSlider()
     startSlider()
   }))
 
   const nextSlide = () => {
     const step = letsslider()
-    
-    parent.style.transition = "transform 0.2s ease-in-out"
+
+    parent.style.transition = "transform 0.3s ease-in-out"
     parent.style.transform = `translateX(-${step}px)`
 
     const resetPosition = () => {
       parent.removeEventListener("transitionend", resetPosition)
       parent.style.transition = "none"
-      
+
       parent.appendChild(parent.firstElementChild)
-      
+
       parent.style.transform = "translateX(0)"
-      
-      updateText()
+
+      if (!isTxtHovered) {
+        updateText()
+      }
     }
 
     parent.addEventListener("transitionend", resetPosition)
@@ -386,14 +407,27 @@ document.addEventListener("DOMContentLoaded", function() {
 
   const stopSlider = () => {
     clearInterval(interval)
+    interval = setInterval(updateText, 2000)
+  }
+
+  const startTxt = () => {
+    isTxtHovered = false
+    startSlider()
+  }
+
+  const stopTxt = () => {
+    isTxtHovered = true
+    startSlider()
   }
 
   parent.addEventListener("mouseenter", stopSlider)
   parent.addEventListener("mouseleave", startSlider)
-  
+  txt.addEventListener("mouseenter", stopTxt)
+  txt.addEventListener("mouseleave", startTxt)
+
   window.addEventListener("resize", () => {
-      parent.style.transition = "none"
-      parent.style.transform = "translateX(0)"
+    parent.style.transition = "none"
+    parent.style.transform = "translateX(0)"
   })
 
   txt.textContent = texts[0]
@@ -425,23 +459,23 @@ document.addEventListener("DOMContentLoaded", function() {
         but2 = document.createElement("button"),
         p2 = document.createElement("p"),
         p3 = document.createElement("p"),
-        delet = document.createElement("a"),
-        deleteIcon = document.createElement("img")
+        delet = document.createElement("a")
 
     img.src = product.img
     x.classList.add("align-items")
+    x.style.position = "relative"
+    x.style.backgroundColor = "#f7f7f7ff"
     img.classList.add("schoolboy")
     p.classList.add("cance")
     p.innerHTML = product.title
-    inX.appendChild(p3)
+    delet.classList.add("deletX")
+delet.innerText = "X"
+    x.appendChild(delet)
     inX.appendChild(div)
     div.appendChild(but)
     div.appendChild(p2)
     div.appendChild(but2)
-    deleteIcon.src = "../img/delete.svg"
-    delet.style.width = "50px"
-    delet.href = "#"
-    sdsx(delet)
+    inX.appendChild(p3)
     but.innerHTML = "-"
     but2.innerHTML = "+"
     div.style.borderRadius = "10px"
@@ -504,9 +538,9 @@ document.addEventListener("DOMContentLoaded", function() {
       let temp = []
 
       carj.forEach(item => {
-          if (item.title !== product.title) {
-              temp.push(item)
-          }
+        if (item.title !== product.title) {
+          temp.push(item)
+        }
       })
 
       localStorage.setItem("carj", JSON.stringify(temp))
@@ -517,7 +551,6 @@ document.addEventListener("DOMContentLoaded", function() {
     x.appendChild(inX)
     inX.insertAdjacentElement("afterbegin", p)
     x.insertAdjacentElement("beforeend", delet)
-    delet.appendChild(deleteIcon)
     inBlocks.appendChild(x)
   }
   let savedCarj = JSON.parse(localStorage.getItem("carj")) || []
@@ -654,6 +687,9 @@ document.addEventListener("DOMContentLoaded", function() {
 
   nope.addEventListener("click", () => {
     confirm.style.display = "none"
+    let info = JSON.parse(localStorage.getItem("info")) || []
+    info = []
+    localStorage.setItem("info", JSON.stringify(info))
   })
 
   infoAgaing()
