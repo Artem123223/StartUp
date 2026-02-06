@@ -304,6 +304,19 @@ document.addEventListener("DOMContentLoaded", function() {
     return card.getBoundingClientRect().width + 29
   }
   leftbtn.addEventListener("click", () => {
+    const step = getCardWidth()
+    cards.style.transition = "none"
+    cards.insertBefore(cards.lastElementChild, cards.firstElementChild)
+    cards.style.transform = `translateX(-${step}px)`
+    
+    cards.offsetHeight 
+    console.log(cards.offsetHeight)
+
+    cards.style.transition = "transform 0.2s ease"
+    cards.style.transform = "translateX(0)"
+  })
+
+  rightbtn.addEventListener("click", () => {
     if (timer) {
       clearTimeout(timer)
       cards.style.transition = "none"
@@ -325,19 +338,6 @@ document.addEventListener("DOMContentLoaded", function() {
       cards.appendChild(cards.firstElementChild)
       timer = null
     }, 200)
-  })
-
-  rightbtn.addEventListener("click", () => {
-    const step = getCardWidth()
-    cards.style.transition = "none"
-    cards.insertBefore(cards.lastElementChild, cards.firstElementChild)
-    cards.style.transform = `translateX(-${step}px)`
-    
-    cards.offsetHeight 
-    console.log(cards.offsetHeight)
-
-    cards.style.transition = "transform 0.2s ease"
-    cards.style.transform = "translateX(0)"
   })
 
   const parent = document.querySelector(".slider-logs")
@@ -452,6 +452,22 @@ document.addEventListener("DOMContentLoaded", function() {
     signin.style.display = "none"
   })
 
+  const checkStorage = () => {
+    let carj = JSON.parse(localStorage.getItem("carj")) || []
+
+    const vas = document.createElement("p")
+    vas.classList.add("vas")
+    vas.textContent = "Кошик чистий"
+
+    if (carj.length === 0) {
+      inBlocks.appendChild(vas)
+    } else {
+      vas.remove()
+    }
+  }
+
+  checkStorage()
+
   const view = document.querySelectorAll(".sdsx")
 
   function newCard(product) {
@@ -477,7 +493,7 @@ document.addEventListener("DOMContentLoaded", function() {
     p.classList.add("cance")
     p.innerHTML = product.title
     delet.classList.add("deletX")
-delet.innerText = "X"
+    delet.innerText = "X"
     x.appendChild(delet)
     inX.appendChild(div)
     div.appendChild(but)
@@ -553,6 +569,7 @@ delet.innerText = "X"
 
       localStorage.setItem("carj", JSON.stringify(temp))
       updateSum()
+      checkStorage()
   })
 
     x.insertAdjacentElement("afterbegin", img)
