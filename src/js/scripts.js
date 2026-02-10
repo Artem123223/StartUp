@@ -298,47 +298,83 @@ document.addEventListener("DOMContentLoaded", function() {
         rightbtn = document.querySelector(".right_button"),
         cards = document.querySelector(".cards")
 
+  let time
+  let isAnimating = false
+  let startX = 0
+  let endX = 0
+
   const getCardWidth = () => {
     const card = cards.firstElementChild
     if (!card) return 0
     return card.getBoundingClientRect().width + 29
   }
-  leftbtn.addEventListener("click", () => {
+
+  const moveLeft = () => {
+    if (isAnimating) return
+    isAnimating = true
+
     const step = getCardWidth()
+    
     cards.style.transition = "none"
     cards.insertBefore(cards.lastElementChild, cards.firstElementChild)
     cards.style.transform = `translateX(-${step}px)`
     
-    cards.offsetHeight 
-    console.log(cards.offsetHeight)
-
+    setTimeout(() => {
     cards.style.transition = "transform 0.2s ease"
     cards.style.transform = "translateX(0)"
-  })
+      
+      setTimeout(() => {
+        isAnimating = false
+      }, 200)
+    }, 10)
+  }
 
-  rightbtn.addEventListener("click", () => {
-    if (timer) {
-      clearTimeout(timer)
-      cards.style.transition = "none"
-      cards.style.transform = "translateX(0)"
-      cards.appendChild(cards.firstElementChild)
-      timer = null
-    }
+  const moveRight = () => {
+    if (isAnimating) return
+    isAnimating = true
 
     const step = getCardWidth()
     
     cards.offsetHeight 
 
     cards.style.transition = "transform 0.2s ease"
-    cards.style.transform = `translate(-${step}px, 0)`
+    cards.style.transform = `translateX(-${step}px)`
 
-    timer = setTimeout(() => {
+    time = setTimeout(() => {
       cards.style.transition = "none"
       cards.style.transform = "translateX(0)"
       cards.appendChild(cards.firstElementChild)
-      timer = null
+      isAnimating = false
+      clearTimeout(time)
     }, 200)
+  }
+
+  leftbtn.addEventListener("click", moveLeft)
+  rightbtn.addEventListener("click", moveRight)
+  
+  cards.addEventListener("touchstart", (e) => {
+    startX = e.touches[0].clientX
+    console.log("Start")
   })
+
+  cards.addEventListener("touchend", (e) => {
+    endX = e.changedTouches[0].clientX
+    console.log("End")
+    handleSwipe()
+  })
+
+  function handleSwipe() {
+    const step = startX - endX
+    console.log(step)
+
+    if (Math.abs(step) < 50) return
+
+    if (step > 0) {
+      moveRight()
+    } else {
+      moveLeft()
+    }
+  }
 
   const parent = document.querySelector(".slider-logs")
   const txt = document.querySelector(".txt-logs")
