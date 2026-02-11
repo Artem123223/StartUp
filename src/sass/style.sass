@@ -480,8 +480,6 @@ main
   align-content: flex-start
 
 .fullBlocks div p
-  width: 100px
-  height: 100px
   background-color: #c0301c
   color: #fff
   display: flex
@@ -491,6 +489,12 @@ main
   font-family: "Roboto Slab"
   margin: 0
   cursor: pointer
+  +media(320)
+    width: 40px
+    height: 40px
+  +media(768)
+    width: 100px
+    height: 100px
 
 @media (max-width: 768px)
   .blocks

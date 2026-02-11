@@ -825,9 +825,9 @@ document.addEventListener("DOMContentLoaded", function() {
       })
     })
   }
+  
   const drag = document.querySelectorAll(".blocks p")
   const dropZones = document.querySelectorAll(".fullBlocks div")
-  const submit = document.querySelector(".axc")
   let draggedItem = null
 
   drag.forEach(item => {
@@ -842,6 +842,52 @@ document.addEventListener("DOMContentLoaded", function() {
         item.classList.remove("hid")
         draggedItem = null
       }, 0)
+    })
+    item.addEventListener("touchstart", () => {
+      draggedItem = item
+      item.style.position = "fixed"
+      item.style.zIndex = "10"
+    })
+    item.addEventListener("touchmove", (e) => {
+      e.preventDefault()
+      const touch = e.touches[0]
+      item.style.left = touch.clientX - (item.offsetWidth / 3) + "px"
+      item.style.top = touch.clientY - (item.offsetHeight * 3) + "px"
+    })
+    item.addEventListener("touchend", (e) => {
+      const touch = e.changedTouches[0]
+      let dropped = false
+
+      dropZones.forEach(zone => {
+        const rect = zone.getBoundingClientRect()
+        
+        if (touch.clientX >= rect.left && touch.clientX <= rect.right &&
+            touch.clientY >= rect.top && touch.clientY <= rect.bottom) {
+          
+          dropped = true
+          
+          if (zone.children.length >= 4) {
+            alert("Max 4 digits!")
+            item.style.position = "static"
+            item.style.zIndex = "auto"
+            return
+          }
+
+          zone.appendChild(item)
+          item.style.position = "static"
+          item.style.zIndex = "auto"
+          item.style.cursor = "pointer"
+          item.onclick = function() {
+            this.remove()
+          }
+        }
+      })
+
+      if (!dropped) {
+        item.style.position = "static"
+        item.style.zIndex = "auto"
+      }
+      draggedItem = null
     })
   })
 
@@ -864,8 +910,9 @@ document.addEventListener("DOMContentLoaded", function() {
       }
     })
   })
-
+  
   const h1 = document.querySelector("h1")
+  const submit = document.querySelector(".axc")
 
   submit.addEventListener("click", (e) => {
     e.preventDefault()
