@@ -303,7 +303,7 @@ document.addEventListener("DOMContentLoaded", function() {
     if (!card) return 0
     return card.getBoundingClientRect().width + 29
   }
-  leftbtn.addEventListener("click", () => {
+  function left () {
     const step = getCardWidth()
     cards.style.transition = "none"
     cards.insertBefore(cards.lastElementChild, cards.firstElementChild)
@@ -313,9 +313,9 @@ document.addEventListener("DOMContentLoaded", function() {
 
     cards.style.transition = "transform 0.2s ease"
     cards.style.transform = "translateX(0)"
-  })
+  }
 
-  rightbtn.addEventListener("click", () => {
+  function right () {
     if (timer) {
       clearTimeout(timer)
       cards.style.transition = "none"
@@ -337,7 +337,32 @@ document.addEventListener("DOMContentLoaded", function() {
       cards.appendChild(cards.firstElementChild)
       timer = null
     }, 200)
+  }
+
+  leftbtn.addEventListener("click", left)
+  rightbtn.addEventListener("click", right)
+
+  let startX = 0,
+      endX = 0
+
+  cards.addEventListener("touchstart", (e) => {
+    startX = e.touches[0].clientX
   })
+
+  cards.addEventListener("touchend", (e) => {
+    endX = e.changedTouches[0].clientX
+    swipe()
+  })
+
+  function swipe () {
+    const result = startX - endX
+
+    if(result >= 30) {
+      right()
+    } else {
+      left()
+    }
+  }
 
   const parent = document.querySelector(".slider-logs")
   const txt = document.querySelector(".txt-logs")
