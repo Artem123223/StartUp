@@ -478,6 +478,15 @@ main
   display: flex
   flex-wrap: wrap
   align-content: flex-start
+  +media(320)
+    width: 80px
+    height: 80px
+  +media(481)
+    width: 140px
+    height: 140px
+  +media(1140)
+    width: 200px
+    height: 200px
 
 .fullBlocks div p
   background-color: #c0301c
@@ -493,6 +502,9 @@ main
     width: 40px
     height: 40px
   +media(768)
+    width: 70px
+    height: 70px
+  +media(1024)
     width: 100px
     height: 100px
 
@@ -507,10 +519,6 @@ main
     width: 60px
     height: 60px
     font-size: 16px
-  
-  .fullBlocks div
-    width: 140px
-    height: 140px
   
   .fullBlocks div p
     font-size: 28px

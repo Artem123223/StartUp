@@ -828,7 +828,8 @@ document.addEventListener("DOMContentLoaded", function() {
   
   const drag = document.querySelectorAll(".blocks p")
   const dropZones = document.querySelectorAll(".fullBlocks div")
-  let draggedItem = null
+  let draggedItem = null,
+      csx = drag.length
 
   drag.forEach(item => {
     item.addEventListener("dragstart", function() {
@@ -851,12 +852,24 @@ document.addEventListener("DOMContentLoaded", function() {
     item.addEventListener("touchmove", (e) => {
       e.preventDefault()
       const touch = e.touches[0]
-      item.style.left = touch.clientX - (item.offsetWidth / 3) + "px"
-      item.style.top = touch.clientY - (item.offsetHeight * 3) + "px"
+      if(window.innerWidth < 768) {
+        item.style.left = touch.clientX - (item.offsetWidth / 3) + "px"
+        item.style.top = touch.clientY - (item.offsetHeight * 3) + "px"
+        if(csx < 7) {
+          item.style.left = touch.clientX - (item.offsetWidth / 3.5) + "px"
+          item.style.top = touch.clientY - (item.offsetHeight * 3.5) + "px"
+        }
+      } else {
+        item.style.left = touch.clientX - (item.offsetWidth / 2.5) + "px"
+        item.style.top = touch.clientY - (item.offsetHeight * 2.5) + "px"
+      }
     })
     item.addEventListener("touchend", (e) => {
       const touch = e.changedTouches[0]
       let dropped = false
+      console.log(csx)
+      csx--
+      console.log(csx)
 
       dropZones.forEach(zone => {
         const rect = zone.getBoundingClientRect()
