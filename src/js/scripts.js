@@ -7,10 +7,65 @@ document.addEventListener("DOMContentLoaded", function() {
         conf = document.querySelector(".confirmBlock"),
         casa = document.querySelector(".casa"),
         confi = document.querySelector(".vasya"),
-        cane = document.querySelector(".ak")
+        cane = document.querySelector(".ak"),
+        signin = document.querySelector(".signin"),
+        cancels = signin.querySelector(".cance"),
+        getstart = document.querySelector(".getstarted")
+
+  const name = document.querySelector("#userName"),
+        email = document.querySelector("#userMail"),
+        subj = document.querySelector("#userSubject"),
+        compName = document.querySelector("#companyName"),
+        userMessage = document.querySelector("#userMessage"),
+        buttonfor = document.querySelector(".vasya"),
+        confirm = document.querySelector(".confirmBlock"),
+        inf = document.querySelectorAll(".infs p")
+
+  const pattern = /[A-Za-z0-9._-]+@[A-Za-z0-9._-]+\.[A-Za-z]+/
 
   if(popap) dark.style.display = "none"
   if(conf) dark.style.display = "none"
+
+  const checkValue = () => {
+    let whatfor = ""
+    const agree = pattern.test(email.value)
+
+    if (!name.value) {
+      whatfor = "name"
+    } else if (!email.value || !agree) {
+      whatfor = "mail"
+    } else if (!subj.value) {
+      whatfor = "object"
+    } else if (!compName.value) {
+      whatfor = "company name"
+    }
+
+    if (whatfor) {
+      alert("Enter the field " + whatfor)
+      return false
+    }
+    return true
+  }
+
+  const checkValu = () => {
+    let whatfor = ""
+    const agree = pattern.test(email.value)
+
+    if (!name.value) {
+      whatfor = "name"
+    } else if (!email.value || !agree) {
+      whatfor = "mail"
+    } else if (!subj.value) {
+      whatfor = "object"
+    } else if (!compName.value) {
+      whatfor = "company name"
+    }
+
+    if (whatfor) {
+      return false
+    }
+    return true
+  }
 
   burger.addEventListener("click", function() {
     home.style.right = "0"
@@ -20,6 +75,9 @@ document.addEventListener("DOMContentLoaded", function() {
     if(window.innerWidth < 768) dark.style.display = "block"
   })
   confi.addEventListener("click", function () {
+    if(window.innerWidth < 768 && checkValu()) dark.style.display = "block"
+  })
+  getstart.addEventListener("click", function() {
     if(window.innerWidth < 768) dark.style.display = "block"
   })
 
@@ -37,6 +95,7 @@ document.addEventListener("DOMContentLoaded", function() {
         popap.classList.remove("blick")
       }
       if(conf) conf.style.display = "none"
+      if(signin) signin.style.display = "none"
   }
   cancel.addEventListener("click", cancelBurger)
   dark.addEventListener("click", cancelBurger)
@@ -103,8 +162,7 @@ document.addEventListener("DOMContentLoaded", function() {
         scrollto = document.querySelectorAll(".home a"),
         main = document.querySelector("main")
 
-  const getstart = document.querySelector(".getstarted"),
-        dolike = document.querySelector(".dolike-btn"),
+  const dolike = document.querySelector(".dolike-btn"),
         readmore = document.querySelectorAll(".readmore"),
         sdx = document.querySelector("#sdx"),
         cance = document.querySelector(".cance")
@@ -131,9 +189,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
   sdsx(sdx)
 
-  const signin = document.querySelector(".signin")
-  const cancels = signin.querySelector(".cance")
-
   getstart.addEventListener("click", (e) => {
     e.preventDefault()
     signin.style.display = "flex"
@@ -146,13 +201,14 @@ document.addEventListener("DOMContentLoaded", function() {
   cancels.addEventListener("click", (e) => {
     e.preventDefault()
     signin.style.display = "none"
+    dark.style.display = "none"
   })
 
   dolike.addEventListener("click", (e) => {
     e.preventDefault()
     let pos = main.lastElementChild || main.lastChild 
     
-    smoothScrollTo(pos.offsetTop, 0.8);
+    smoothScrollTo(pos.offsetTop, 2.5);
   })
 
   cance.addEventListener("click", (e) => {
@@ -291,7 +347,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const position = takeblock.offsetTop
     
     cancelBurger()
-    smoothScrollTo(position, 0.8); 
+    smoothScrollTo(position, 2.5); 
   }))
 
   const leftbtn = document.querySelector(".left_button"),
@@ -357,7 +413,7 @@ document.addEventListener("DOMContentLoaded", function() {
   function swipe () {
     const result = startX - endX
 
-    if(result >= 30) {
+    if(result >= 50) {
       right()
     } else {
       left()
@@ -666,19 +722,8 @@ document.addEventListener("DOMContentLoaded", function() {
   }))
   updateSum()
 
-  const name = document.querySelector("#userName"),
-        email = document.querySelector("#userMail"),
-        subj = document.querySelector("#userSubject"),
-        compName = document.querySelector("#companyName"),
-        userMessage = document.querySelector("#userMessage"),
-        buttonfor = document.querySelector(".vasya"),
-        confirm = document.querySelector(".confirmBlock"),
-        inf = document.querySelectorAll(".infs p")
-
   const nope = document.querySelector(".bad"),
         yes = document.querySelector(".cool")
-
-  const pattern = /[A-Za-z0-9._-]+@[A-Za-z0-9._-]+\.[A-Za-z]+/
 
   const infoAgaing = () => {
     let info = JSON.parse(localStorage.getItem("info")) || []
@@ -693,29 +738,14 @@ document.addEventListener("DOMContentLoaded", function() {
     console.log(info)
   }
 
-  const checkValue = () => {
-    let whatfor = ""
-    const agree = pattern.test(email.value)
-
-    if (!name.value) {
-      whatfor = "name"
-    } else if (!email.value || !agree) {
-      whatfor = "mail"
-    } else if (!subj.value) {
-      whatfor = "object"
-    } else if (!compName.value) {
-      whatfor = "company name"
-    }
-
-    if (whatfor) {
-      alert("Enter the field " + whatfor)
-      return false
-    }
-    return true
-  }
-
-  buttonfor.addEventListener("click", () => {
+  buttonfor.addEventListener("click", (e) => {
+    e.preventDefault()
+    
     if (checkValue()) {
+      if (window.innerWidth < 768) {
+        dark.style.display = "block"
+      }
+      
       confirm.style.display = "flex"
       confirm.style.flexDirection = "column"
       confirm.style.justifyContent = "space-between"
@@ -723,7 +753,6 @@ document.addEventListener("DOMContentLoaded", function() {
       signin.style.display = "none"
 
       const masBut = [name.value, email.value, subj.value, compName.value, userMessage.value]
-
       const imena = ["Name: ", "Email: ", "Subject: ", "Company Name: ", "Message: "]
 
       for (let i = 0; i < inf.length; i++) {
@@ -736,6 +765,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
   nope.addEventListener("click", () => {
     confirm.style.display = "none"
+    dark.style.display = "none"
     let info = JSON.parse(localStorage.getItem("info")) || []
     info = []
     localStorage.setItem("info", JSON.stringify(info))
@@ -951,6 +981,13 @@ document.addEventListener("DOMContentLoaded", function() {
   const h1 = document.querySelector("h1")
   const submit = document.querySelector(".axc")
 
+  let zagovolok = false
+
+  let sd = JSON.parse(localStorage.getItem("zagovolok")) || false
+  if(sd == true) {
+    h1.textContent = "U did registration, u dont have to do it again"
+  }
+
   submit.addEventListener("click", (e) => {
     e.preventDefault()
     
@@ -976,6 +1013,8 @@ document.addEventListener("DOMContentLoaded", function() {
       alert("Success! 21.09.2012")
       h1.textContent = "Now, u did it"
       signin.style.display = "none"
+      zagovolok = true
+      localStorage.setItem("zagovolok", JSON.stringify(zagovolok))
     } else {
       alert("Wrong date!")
     }

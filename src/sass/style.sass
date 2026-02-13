@@ -937,7 +937,12 @@ main
       width: auto
 
 .read img
-  max-height: 322px
+  +media(768)
+    max-width: 45vw
+    max-height: 50vh
+  +media(1140)
+    max-width: auto
+    max-height: 322px
 
 .read
   display: flex
@@ -1368,8 +1373,6 @@ footer
 
 .confirmBlock
   display: none
-  width: 50vw
-  height: 50vh
   background-color: #fff
   border: 2px solid #dadada
   position: fixed
@@ -1380,6 +1383,12 @@ footer
   padding: 10px
   h2
     text-align: center
+  +media(320)
+    width: 70vw
+    height: 70vh
+  +media(768)
+    width: 50vw
+    height: 50vh
 
 .xr
   width: 100%
@@ -1413,6 +1422,10 @@ footer
     background-color: #7e0000
     border-color: #7e0000
 
+@media (max-width: 768px) 
+  .cool, .bad
+    min-height: 56px
+
 .buttonsFor
   display: flex
   align-items: center
@@ -1426,8 +1439,11 @@ footer
   flex-direction: column
   align-items: center
   p 
+    font-size: 20px
     font-weight: 600
     font-family: "Roboto Slab"
+    +media(768)
+      font-size: 26px
 
 .anim-items 
   opacity: 0
