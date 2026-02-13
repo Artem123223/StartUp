@@ -838,38 +838,53 @@ document.addEventListener("DOMContentLoaded", function() {
         item.classList.add("hid")
       }, 0)
     })
+
     item.addEventListener("dragend", function() {
       setTimeout(() => {
         item.classList.remove("hid")
         draggedItem = null
       }, 0)
     })
-    item.addEventListener("touchstart", () => {
+
+    item.addEventListener("touchstart", (e) => {
       draggedItem = item
+      
       item.style.position = "fixed"
       item.style.zIndex = "10"
+      item.style.margin = "0"
+      
+      item.style.left = "0px"
+      item.style.top = "0px"
+      
+      const rectZero = item.getBoundingClientRect()
+      item.dataset.offsetX = rectZero.left
+      item.dataset.offsetY = rectZero.top
+      
+      const touch = e.touches[0]
+      const width = item.offsetWidth
+      const height = item.offsetHeight
+      
+      item.style.left = (touch.clientX - rectZero.left - width / 2) + "px"
+      item.style.top = (touch.clientY - rectZero.top - height / 2) + "px"
     })
+
     item.addEventListener("touchmove", (e) => {
       e.preventDefault()
       const touch = e.touches[0]
-      if(window.innerWidth < 768) {
-        item.style.left = touch.clientX - (item.offsetWidth / 3) + "px"
-        item.style.top = touch.clientY - (item.offsetHeight * 3) + "px"
-        if(csx < 7) {
-          item.style.left = touch.clientX - (item.offsetWidth / 3.5) + "px"
-          item.style.top = touch.clientY - (item.offsetHeight * 3.5) + "px"
-        }
-      } else {
-        item.style.left = touch.clientX - (item.offsetWidth / 2.5) + "px"
-        item.style.top = touch.clientY - (item.offsetHeight * 2.5) + "px"
-      }
-    })
+      
+      const offsetX = parseFloat(item.dataset.offsetX)
+      const offsetY = parseFloat(item.dataset.offsetY)
+      const width = item.offsetWidth
+      const height = item.offsetHeight
+      
+      item.style.left = (touch.clientX - offsetX - width / 2) + "px"
+      item.style.top = (touch.clientY - offsetY - height / 2) + "px"
+    }, { passive: false })
+
     item.addEventListener("touchend", (e) => {
       const touch = e.changedTouches[0]
       let dropped = false
-      console.log(csx)
       csx--
-      console.log(csx)
 
       dropZones.forEach(zone => {
         const rect = zone.getBoundingClientRect()
@@ -883,12 +898,18 @@ document.addEventListener("DOMContentLoaded", function() {
             alert("Max 4 digits!")
             item.style.position = "static"
             item.style.zIndex = "auto"
+            item.style.margin = ""
+            delete item.dataset.offsetX
+            delete item.dataset.offsetY
             return
           }
 
           zone.appendChild(item)
           item.style.position = "static"
           item.style.zIndex = "auto"
+          item.style.margin = ""
+          delete item.dataset.offsetX
+          delete item.dataset.offsetY
           item.style.cursor = "pointer"
           item.onclick = function() {
             this.remove()
@@ -899,6 +920,9 @@ document.addEventListener("DOMContentLoaded", function() {
       if (!dropped) {
         item.style.position = "static"
         item.style.zIndex = "auto"
+        item.style.margin = ""
+        delete item.dataset.offsetX
+        delete item.dataset.offsetY
       }
       draggedItem = null
     })
@@ -908,6 +932,7 @@ document.addEventListener("DOMContentLoaded", function() {
     zone.addEventListener("dragover", (e) => {
       e.preventDefault()
     })
+    
     zone.addEventListener("drop", (e) => {
       e.preventDefault()
       if (zone.children.length >= 4) {
@@ -923,7 +948,6 @@ document.addEventListener("DOMContentLoaded", function() {
       }
     })
   })
-  
   const h1 = document.querySelector("h1")
   const submit = document.querySelector(".axc")
 
