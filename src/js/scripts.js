@@ -1013,6 +1013,7 @@ document.addEventListener("DOMContentLoaded", function() {
       alert("Success! 21.09.2012")
       h1.textContent = "Now, u did it"
       signin.style.display = "none"
+      dark.style.display = "none"
       zagovolok = true
       localStorage.setItem("zagovolok", JSON.stringify(zagovolok))
     } else {
